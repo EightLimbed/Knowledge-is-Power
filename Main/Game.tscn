@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqo1gwf4jc7sn"]
+
+[ext_resource type="Script" path="res://Main/Game.gd" id="1_n2juu"]
+[ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
+[ext_resource type="PackedScene" uid="uid://imjbg5m6uhty" path="res://Player/Player.tscn" id="3_u20kj"]
+[ext_resource type="Script" path="res://UI/HUD/FPS.gd" id="4_eel0q"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_n2juu")
+
+[node name="Dungeon" parent="." instance=ExtResource("2_ew2mm")]
+layer_0/tile_data = PackedInt32Array(65538, 0, 0, 65539, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_u20kj")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="FPS" type="Label" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS:"
+script = ExtResource("4_eel0q")
+metadata/_edit_use_anchors_ = true

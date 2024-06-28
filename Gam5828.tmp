@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqo1gwf4jc7sn"]
+
+[ext_resource type="Texture2D" uid="uid://b3s63agdslqxj" path="res://Isometric_Tiles.png" id="1_o0e8n"]
+[ext_resource type="Script" path="res://TileMap.gd" id="2_3jpth"]
+[ext_resource type="PackedScene" uid="uid://imjbg5m6uhty" path="res://Player.tscn" id="3_2ephl"]
+[ext_resource type="Script" path="res://FPS.gd" id="4_557dn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvxpq"]
+texture = ExtResource("1_o0e8n")
+texture_region_size = Vector2i(32, 48)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_m3lw5"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_pvxpq")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_m3lw5")
+format = 2
+layer_0/name = "1"
+layer_0/modulate = Color(0.784314, 0.784314, 0.784314, 1)
+layer_0/y_sort_enabled = true
+layer_1/name = "2"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 24
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("2_3jpth")
+
+[node name="Player" parent="." instance=ExtResource("3_2ephl")]
+y_sort_enabled = true
+position = Vector2(576, 324)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="FPS" type="Label" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS:"
+script = ExtResource("4_557dn")
+metadata/_edit_use_anchors_ = true
