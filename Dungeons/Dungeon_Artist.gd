@@ -6,7 +6,7 @@ var random = RandomNumberGenerator.new()
 @export var room_centers = []
 
 func _ready():
-	draw_dungeon(Vector2(0, 0), 10, 2)
+	draw_dungeon(Vector2(0, 0), 11, 2)
 	queue_redraw()
 
 func draw_dungeon(coordinates: Vector2, room_count, branch_rarity):
