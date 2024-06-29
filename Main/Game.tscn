@@ -24,3 +24,5 @@ offset_bottom = 23.0
 text = "FPS:"
 script = ExtResource("4_eel0q")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="next_level" from="Dungeon" to="." method="_on_dungeon_next_level"]

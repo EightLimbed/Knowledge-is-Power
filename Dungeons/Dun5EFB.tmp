@@ -2,8 +2,16 @@
 
 [ext_resource type="Script" path="res://Dungeons/Dungeon.gd" id="1_h7yde"]
 [ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_o6gso"]
+[ext_resource type="Script" path="res://Dungeons/Dungeon_Artist.gd" id="3_ha1d6"]
 [ext_resource type="Texture2D" uid="uid://c3g66624gc22w" path="res://Dungeons/Art/Portal_Frame.png" id="4_5yopd"]
-[ext_resource type="Script" path="res://Dungeons/Dungeon_Design.gd" id="4_p08bb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44swq"]
+resource_name = "Floor"
+texture = ExtResource("1_o6gso")
+texture_region_size = Vector2i(32, 48)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8asg"]
 resource_name = "Walls"
@@ -13,17 +21,13 @@ texture_region_size = Vector2i(32, 48)
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-1:0/0 = 0
-1:0/0/y_sort_origin = -8
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybpia"]
 resource_name = "Portal"
 texture = ExtResource("4_5yopd")
 texture_region_size = Vector2i(128, 112)
 0:0/0 = 0
-0:0/0/y_sort_origin = 50
+0:0/0/y_sort_origin = 56
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 48, -48, 56, -32, 48, -48, 40)
@@ -34,26 +38,13 @@ tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_b8asg")
-sources/1 = SubResource("TileSetAtlasSource_ybpia")
+sources/2 = SubResource("TileSetAtlasSource_ybpia")
+sources/1 = SubResource("TileSetAtlasSource_b8asg")
+sources/0 = SubResource("TileSetAtlasSource_44swq")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_q0vng"]
 a = Vector2(-33, 48)
 b = Vector2(33, 48)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4jqkn"]
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 64.0
-initial_velocity_max = 64.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_max = 10.0
-color = Color(1, 0.25098, 1, 0.501961)
-hue_variation_min = 0.8
-hue_variation_max = 1.0
 
 [node name="Dungeon" type="TileMap"]
 y_sort_enabled = true
@@ -62,7 +53,8 @@ tile_set = SubResource("TileSet_3queo")
 format = 2
 layer_0/name = "Floor"
 layer_0/y_sort_enabled = true
-layer_1/name = "Portal"
+layer_0/y_sort_origin = -1000
+layer_1/name = "Walls"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = true
@@ -71,26 +63,20 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 script = ExtResource("1_h7yde")
 
-[node name="Designer" type="Node2D" parent="."]
+[node name="Artist" type="Node2D" parent="."]
 top_level = true
 position = Vector2(576, 324)
-script = ExtResource("4_p08bb")
+script = ExtResource("3_ha1d6")
 
-[node name="PortalTrigger" type="Area2D" parent="."]
-position = Vector2(0, 540)
+[node name="Portal" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+texture_filter = 1
+texture = ExtResource("4_5yopd")
+offset = Vector2(0, -48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalTrigger"]
+[node name="Area2D" type="Area2D" parent="Portal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/Area2D"]
 position = Vector2(0, -48)
 shape = SubResource("SegmentShape2D_q0vng")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="PortalTrigger"]
-z_index = 1
-position = Vector2(0, -36)
-amount = 80
-process_material = SubResource("ParticleProcessMaterial_4jqkn")
-lifetime = 0.5
-trail_lifetime = 0.5
-trail_sections = 2
-trail_section_subdivisions = 2
-
-[connection signal="body_entered" from="PortalTrigger" to="." method="_on_portal_trigger_body_entered"]

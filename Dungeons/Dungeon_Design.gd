@@ -6,15 +6,19 @@ var random = RandomNumberGenerator.new()
 @export var room_centers = []
 
 func _ready():
-	draw_dungeon(Vector2(0, 0), 11, 2)
-	queue_redraw()
+	#queue_redraw()
+	pass
 
-func draw_dungeon(coordinates: Vector2, room_count, branch_rarity):
+#uses rooms and pathways to create dungeon
+func design_dungeon(coordinates: Vector2, room_count, branch_rarity):
+	floor = []
+	walls = []
+	room_centers = []
 	position = coordinates
-	create_room()
+	design_room()
 	for i in room_count-1:
-		create_path()
-		create_room()
+		design_path()
+		design_room()
 		if random.randi_range(0,branch_rarity-1) == 0:
 			position = room_centers[random.randi_range(1,room_centers.size()-2)]
 
@@ -22,10 +26,11 @@ func draw_dungeon(coordinates: Vector2, room_count, branch_rarity):
 
 #temporary testing to show dungeon layout, maybe will use same thng for minimap
 func _draw():
-	draw_polyline(floor, Color.GREEN, 1, false)
+	#draw_polyline(floor, Color.GREEN, 1, false)
+	pass
 
 #creates rooms
-func create_room():
+func design_room():
 	var size = Vector2i(0,0)
 	#starts at center
 	var center = position
@@ -51,7 +56,7 @@ func create_room():
 
 
 #creates pathways beetween rooms
-func create_path():
+func design_path():
 	var direction = Vector2(0,0)
 	#Vector2 will be made from these to move in a set direction
 	var directions = [-1,1]
