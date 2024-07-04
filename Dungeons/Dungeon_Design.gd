@@ -1,17 +1,13 @@
 extends Node2D
 
 var random = RandomNumberGenerator.new()
-@export var floor = []
+@export var ground = []
 @export var walls = []
 @export var room_centers = []
 
-func _ready():
-	#queue_redraw()
-	pass
-
 #uses rooms and pathways to create dungeon
 func design_dungeon(coordinates: Vector2, room_count, branch_rarity):
-	floor = []
+	ground = []
 	walls = []
 	room_centers = []
 	position = coordinates
@@ -21,12 +17,12 @@ func design_dungeon(coordinates: Vector2, room_count, branch_rarity):
 		design_room()
 		if random.randi_range(0,branch_rarity-1) == 0:
 			position = room_centers[random.randi_range(1,room_centers.size()-2)]
-
 	position = coordinates
+	#queue_redraw()
 
 #temporary testing to show dungeon layout, maybe will use same thng for minimap
 func _draw():
-	#draw_polyline(floor, Color.GREEN, 1, false)
+	#draw_polyline(ground, Color.GREEN, 1, false)
 	pass
 
 #creates rooms
@@ -36,8 +32,8 @@ func design_room():
 	var center = position
 	room_centers.append(center)
 	#dimensions of rooms
-	size.x = random.randi_range(24,32)
-	size.y = random.randi_range(24,32)
+	size.x = random.randi_range(32,38)
+	size.y = random.randi_range(32,28)
 
 	#adds coordinates of room walls
 	for x in size.x:
@@ -48,8 +44,7 @@ func design_room():
 	for x in size.x-2:
 		for y in size.y-2:
 			position = Vector2(center.x+x-size.x/2+1, center.y+y-size.y/2+1)
-			floor.append(position)
-			walls.erase(position)
+			ground.append(position)
 	position = center
 	#adds points of interest at center, for example chests, or enemies
 	#dungeon generator can get these, and add said scenes
@@ -63,31 +58,28 @@ func design_path():
 
 	#thickness of path
 	var path_thickness = 4
-	var path_length = random.randi_range(32,48)
+	var path_length = 40
 	#build Vector 2 from direction
 	direction.x = directions[random.randi_range(0,1)]
 	direction.y = directions[random.randi_range(0,1)]
 
 	#rebuilds direction until the path does not intersect with another room
-	while floor.has(path_length*direction+position) or walls.has(path_length*direction+position):
-		#resets position if it gets stuck branching
-		for i in 10:
-			direction.x = directions[random.randi_range(0,1)]
-			direction.y = directions[random.randi_range(0,1)]
-		position = room_centers[random.randi_range(1,room_centers.size()-2)] 
+	while (ground.has(path_length*direction+position) or walls.has(path_length*direction+position)):
+		position = room_centers[random.randi_range(0,room_centers.size()-2)]
+		direction.x = directions[random.randi_range(0,1)]
+		direction.y = directions[random.randi_range(0,1)]
 
 	#adds all coordinates of pathway floor and walls
 	for a in path_length:
 		position += direction
-		floor.append(position)
-		for i in path_thickness:
-			floor.append(position-Vector2(0,i))
-			floor.append(position+Vector2(0,i))
-			floor.append(position-Vector2(i,0))
-			floor.append(position+Vector2(i,0))
-		
+		ground.append(position)
 		#adds all coordinates of pathway walls
 		walls.append(position-Vector2(0,path_thickness))
 		walls.append(position+Vector2(0,path_thickness))
 		walls.append(position-Vector2(path_thickness,0))
 		walls.append(position+Vector2(path_thickness,0))
+		for i in path_thickness:
+			ground.append(position-Vector2(0,i))
+			ground.append(position+Vector2(0,i))
+			ground.append(position-Vector2(i,0))
+			ground.append(position+Vector2(i,0))

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://csgh6ylepdv37"]
+
+[ext_resource type="Script" path="res://Enemies/EnemyResource.gd" id="1_6bhis"]
+[ext_resource type="Texture2D" uid="uid://c1kbr7va1rgtx" path="res://icon.svg" id="1_8phpu"]
+[ext_resource type="Texture2D" uid="uid://bap1taibwjhlf" path="res://Enemies/Shooter/Art/ShooterBullet.png" id="1_41dnk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dr8gj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8phpu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+resource_name = "Shooter Enemy"
+script = ExtResource("1_6bhis")
+frames = SubResource("SpriteFrames_dr8gj")
+projectile = ExtResource("1_41dnk")
+damage = 20
+attack_speed = 1
+max_health = 60
+speed = 30000
+multishot = 1
+spread = 0
+proj_lifetime = 2
+proj_speed = 60000
+hover_distance = 200
+attack_distance = 250
+agro_distance = 1000

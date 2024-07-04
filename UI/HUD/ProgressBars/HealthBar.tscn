@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3gn06ty82qy8"]
+
+[ext_resource type="Texture2D" uid="uid://ce4qyockv1w3j" path="res://UI/HUD/ProgressBars/Art/ProgressBarEmpty.png" id="1_bxl6i"]
+[ext_resource type="Texture2D" uid="uid://bxpkircsurrs2" path="res://UI/HUD/ProgressBars/Art/HealthBarFull.png" id="2_6e8sc"]
+[ext_resource type="Script" path="res://UI/HUD/ProgressBars/ProgressBar.gd" id="3_xfbib"]
+[ext_resource type="Texture2D" uid="uid://c7an05lnwvdpo" path="res://UI/HUD/ProgressBars/Art/HealthSymbol.png" id="4_gyhjo"]
+
+[node name="HealthBar" type="TextureProgressBar"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = -552.0
+offset_bottom = -340.0
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+texture_under = ExtResource("1_bxl6i")
+texture_progress = ExtResource("2_6e8sc")
+script = ExtResource("3_xfbib")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_right = -4.0
+offset_bottom = 16.0
+texture = ExtResource("4_gyhjo")

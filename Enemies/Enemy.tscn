@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf1gx5raddfsx"]
+
+[ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_0r5i7"]
+[ext_resource type="Texture2D" uid="uid://c1kbr7va1rgtx" path="res://icon.svg" id="2_k1s4r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86wa2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k1s4r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62s0b"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwtgx"]
+radius = 250.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_whwb6"]
+radius = 500.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_0r5i7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_86wa2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -8, 16, 0, 0, 8, -16, 0)
+
+[node name="HoverDistance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverDistance"]
+shape = SubResource("CircleShape2D_62s0b")
+debug_color = Color(0, 0.6, 0.701961, 0.0392157)
+
+[node name="AttackDistance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDistance"]
+shape = SubResource("CircleShape2D_pwtgx")
+debug_color = Color(0, 0.6, 0.701961, 0.0392157)
+
+[node name="AggroDistance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroDistance"]
+shape = SubResource("CircleShape2D_whwb6")
+debug_color = Color(0, 0.6, 0.701961, 0.0392157)
+
+[connection signal="area_entered" from="HoverDistance" to="." method="_on_hover_distance_area_entered"]
+[connection signal="area_exited" from="HoverDistance" to="." method="_on_hover_distance_area_exited"]
+[connection signal="area_entered" from="AttackDistance" to="." method="_on_attack_distance_area_entered"]
+[connection signal="area_exited" from="AttackDistance" to="." method="_on_attack_distance_area_exited"]
+[connection signal="area_shape_entered" from="AggroDistance" to="." method="_on_aggro_distance_area_shape_entered"]
+[connection signal="area_shape_exited" from="AggroDistance" to="." method="_on_aggro_distance_area_shape_exited"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://imjbg5m6uhty"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_nm3bf"]
+[ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="2_whrst"]
+[ext_resource type="Texture2D" uid="uid://unqu1bc5dobe" path="res://Player/Art/Player135.png" id="3_4ki6m"]
+[ext_resource type="Texture2D" uid="uid://dovndm3ky28gl" path="res://Player/Art/Player180.png" id="3_fxsom"]
+[ext_resource type="Texture2D" uid="uid://dc7j1485ff2qf" path="res://Player/Art/Player90.png" id="3_olphg"]
+[ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="3_rihnu"]
+[ext_resource type="Texture2D" uid="uid://d2nj4gsvb2vkx" path="res://Player/Art/Player225.png" id="5_vyoj0"]
+[ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="7_1inqp"]
+[ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="9_cxcyf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xglce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_whrst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rihnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_olphg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4ki6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fxsom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vyoj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1inqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cxcyf")
+}],
+"loop": true,
+"name": &"Directions",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+motion_mode = 1
+script = ExtResource("1_nm3bf")
+
+[node name="PlayerTexture" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_xglce")
+animation = &"Directions"
+offset = Vector2(0, -32)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -9, 18, 0, 0, 9, -18, 0)

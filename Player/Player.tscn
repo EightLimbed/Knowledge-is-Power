@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://imjbg5m6uhty"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_nm3bf"]
-[ext_resource type="Texture2D" uid="uid://dfri568khd2fa" path="res://Player/Art/Player0.png" id="2_whrst"]
-[ext_resource type="Texture2D" uid="uid://cqi7l2nrkqsm3" path="res://Player/Art/Player135.png" id="3_4ki6m"]
-[ext_resource type="Texture2D" uid="uid://dw52mtrepf48b" path="res://Player/Art/Player180.png" id="3_fxsom"]
-[ext_resource type="Texture2D" uid="uid://db1eu7gwfeld0" path="res://Player/Art/Player90.png" id="3_olphg"]
-[ext_resource type="Texture2D" uid="uid://bjn21y3m8xjxe" path="res://Player/Art/Player45.png" id="3_rihnu"]
-[ext_resource type="Texture2D" uid="uid://blajs53p8tyht" path="res://Player/Art/Player225.png" id="5_vyoj0"]
-[ext_resource type="Texture2D" uid="uid://dnlnwf15iston" path="res://Player/Art/Player270.png" id="7_1inqp"]
-[ext_resource type="Texture2D" uid="uid://duwur25kqvhfy" path="res://Player/Art/Player315.png" id="9_cxcyf"]
+[ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="2_whrst"]
+[ext_resource type="Texture2D" uid="uid://unqu1bc5dobe" path="res://Player/Art/Player135.png" id="3_4ki6m"]
+[ext_resource type="Texture2D" uid="uid://dovndm3ky28gl" path="res://Player/Art/Player180.png" id="3_fxsom"]
+[ext_resource type="Texture2D" uid="uid://dc7j1485ff2qf" path="res://Player/Art/Player90.png" id="3_olphg"]
+[ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="3_rihnu"]
+[ext_resource type="Texture2D" uid="uid://d2nj4gsvb2vkx" path="res://Player/Art/Player225.png" id="5_vyoj0"]
+[ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="7_1inqp"]
+[ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="9_cxcyf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xglce"]
 animations = [{
@@ -51,7 +51,14 @@ script = ExtResource("1_nm3bf")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_xglce")
 animation = &"Directions"
-offset = Vector2(0, -32)
+offset = Vector2(0, -24)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, -9, 18, 0, 0, 9, -18, 0)
+polygon = PackedVector2Array(0, -8, 16, 0, 0, 8, -16, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -8, 16, 0, 0, 8, -16, 0)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

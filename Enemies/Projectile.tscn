@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://becsqxl4xrgj6"]
+
+[ext_resource type="Texture2D" uid="uid://bap1taibwjhlf" path="res://Enemies/Shooter/Art/ShooterBullet.png" id="1_j6g3s"]
+[ext_resource type="Script" path="res://Enemies/Projectile.gd" id="1_x51da"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56inw"]
+radius = 8.0
+
+[node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_x51da")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_j6g3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_56inw")
+
+[node name="Lifetime" type="Timer" parent="."]
+process_callback = 0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_56inw")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

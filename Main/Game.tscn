@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=7 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
 [ext_resource type="PackedScene" uid="uid://imjbg5m6uhty" path="res://Player/Player.tscn" id="3_u20kj"]
 [ext_resource type="Script" path="res://UI/HUD/FPS.gd" id="4_eel0q"]
+[ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="5_gk5jb"]
+[ext_resource type="PackedScene" uid="uid://f1f1hktrckvd" path="res://UI/HUD/ProgressBars/DashBar.tscn" id="5_idogn"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -15,14 +17,26 @@ layer_0/tile_data = PackedInt32Array(65538, 0, 0, 65539, 0, 0)
 [node name="Player" parent="." instance=ExtResource("3_u20kj")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="FPS" type="Label" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 26.0
+grow_horizontal = 0
 text = "FPS:"
 script = ExtResource("4_eel0q")
 metadata/_edit_use_anchors_ = true
+
+[node name="DashBar" parent="HUD" instance=ExtResource("5_idogn")]
+offset_top = 28.0
+offset_bottom = -316.0
+
+[node name="HealthBar" parent="HUD" instance=ExtResource("5_gk5jb")]
 
 [connection signal="next_level" from="Dungeon" to="." method="_on_dungeon_next_level"]
