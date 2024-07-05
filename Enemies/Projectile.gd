@@ -13,15 +13,14 @@ var lifetime : float
 func _ready():
 	$Lifetime.wait_time = lifetime
 	global_position = spawn_pos
-	global_rotation = spawn_rot
 	$Sprite2D.texture = texture
 
 func _process(delta):
-	velocity = Vector2(0,-speed).rotated(rot)*delta
-	move_and_collide(velocity)
+	velocity = Vector2(speed,0).rotated(rot)*delta
+	move_and_slide()
 
 func _on_lifetime_timeout():
 	queue_free()
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	queue_free()

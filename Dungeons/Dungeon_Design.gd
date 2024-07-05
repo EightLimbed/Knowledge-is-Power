@@ -1,9 +1,9 @@
 extends Node2D
 
 var random = RandomNumberGenerator.new()
-@export var ground = []
-@export var walls = []
-@export var room_centers = []
+@export var ground : Array
+@export var walls : Array
+@export var room_centers : Array
 
 #uses rooms and pathways to create dungeon
 func design_dungeon(coordinates: Vector2, room_count, branch_rarity):

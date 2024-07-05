@@ -12,8 +12,10 @@ var dash_time : float = 0
 @export var dash_cooldown : float = 250
 
 #resources
-@export var health : int = 99
+@export var health : int = 100
 @export var max_health : int = 100
+var hit : float = 0
+
 
 func _ready():
 	texture = $PlayerTexture
@@ -22,24 +24,27 @@ func _physics_process(delta):
 	#gets direction of input
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-	
+
 	#starts dash if cooldown is over
-	if Input.is_action_just_pressed("ui_accept") and input and dash >= dash_cooldown:
+	if Input.is_action_just_pressed("ui_accept") and dash >= dash_cooldown:
 		dash_time = dash_length
 		dash = 0
 
 	#does dashing, or basic movement
 	if dash_time > 0:
+		#dashing gives immunity frames
+		hit = 0.1
+		#dash time runs out
 		dash_time -= delta
 		velocity = dash_speed*input.normalized()*speed*delta*Vector2(1,0.5)
 	else:
 		dash += delta*500
 		velocity = input.normalized()*speed*delta*Vector2(1,0.5)
+	hit -= delta
 	direction_texture(input)
 	move_and_slide()
 
-
-#temporary, before animations
+#directional costumes
 func direction_texture(dir: Vector2):
 	#0
 	if dir == Vector2(0,1):
@@ -66,7 +71,8 @@ func direction_texture(dir: Vector2):
 	elif dir == Vector2(1,1):
 		texture.frame = 7
 
-
-func _on_area_2d_area_entered(body):
-	if body.name == "Projectile":
+#takes damage from projectiles
+func _on_damage_hitbox_body_entered(body):
+	if body.name.begins_with("Projectile") and hit <= 0:
 		health -= body.damage
+		hit = 0.1

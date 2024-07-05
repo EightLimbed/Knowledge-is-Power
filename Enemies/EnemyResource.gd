@@ -4,7 +4,7 @@ class_name Enemy
 
 #textures
 #enemy texture for each direction, need 8
-@export var frames : SpriteFrames
+@export var sprite_frames : SpriteFrames
 #bullet textures
 @export var projectile_texture : Texture2D
 

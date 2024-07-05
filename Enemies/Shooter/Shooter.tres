@@ -1,35 +1,42 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://csgh6ylepdv37"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=12 format=3 uid="uid://csgh6ylepdv37"]
 
 [ext_resource type="Script" path="res://Enemies/EnemyResource.gd" id="1_6bhis"]
-[ext_resource type="Texture2D" uid="uid://c1kbr7va1rgtx" path="res://icon.svg" id="1_8phpu"]
 [ext_resource type="Texture2D" uid="uid://bap1taibwjhlf" path="res://Enemies/Shooter/Art/ShooterBullet.png" id="1_41dnk"]
+[ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="1_y1xmc"]
+[ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="2_7fmnv"]
+[ext_resource type="Texture2D" uid="uid://dc7j1485ff2qf" path="res://Player/Art/Player90.png" id="3_8xnbt"]
+[ext_resource type="Texture2D" uid="uid://unqu1bc5dobe" path="res://Player/Art/Player135.png" id="4_abdgt"]
+[ext_resource type="Texture2D" uid="uid://dovndm3ky28gl" path="res://Player/Art/Player180.png" id="5_r68ad"]
+[ext_resource type="Texture2D" uid="uid://d2nj4gsvb2vkx" path="res://Player/Art/Player225.png" id="6_16bg8"]
+[ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="7_17kvy"]
+[ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="8_bltm7"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dr8gj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4aymc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("1_y1xmc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("2_7fmnv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("3_8xnbt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("4_abdgt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("5_r68ad")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("6_16bg8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("7_17kvy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_8phpu")
+"texture": ExtResource("8_bltm7")
 }],
 "loop": true,
 "name": &"default",
@@ -39,16 +46,16 @@ animations = [{
 [resource]
 resource_name = "Shooter Enemy"
 script = ExtResource("1_6bhis")
-frames = SubResource("SpriteFrames_dr8gj")
-projectile = ExtResource("1_41dnk")
+sprite_frames = SubResource("SpriteFrames_4aymc")
+projectile_texture = ExtResource("1_41dnk")
 damage = 20
 attack_speed = 1
 max_health = 60
-speed = 30000
-multishot = 1
-spread = 0
-proj_lifetime = 2
-proj_speed = 60000
-hover_distance = 200
-attack_distance = 250
-agro_distance = 1000
+speed = 15000
+multishot = 5
+spread = 10
+proj_lifetime = 3
+proj_speed = 15000
+hover_distance = 75
+attack_distance = 100
+agro_distance = 500

@@ -1,9 +1,9 @@
 extends TileMap
 
 var random = RandomNumberGenerator.new()
-var ground
-var walls
-var room_centers
+var ground : Array
+var walls : Array
+var room_centers : Array
 signal next_level()
 
 func _ready():
@@ -22,7 +22,7 @@ func new_level():
 	clear_layer(0)
 	clear_layer(1)
 	#gets dungeon design
-	$Designer.design_dungeon(Vector2(0,0), 10, 1)
+	$Designer.design_dungeon(Vector2(0,0), 2, 1)
 	#gets important values
 	ground = $Designer.ground
 	walls = $Designer.walls

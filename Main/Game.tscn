@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=8 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://UI/HUD/FPS.gd" id="4_eel0q"]
 [ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="5_gk5jb"]
 [ext_resource type="PackedScene" uid="uid://f1f1hktrckvd" path="res://UI/HUD/ProgressBars/DashBar.tscn" id="5_idogn"]
+[ext_resource type="PackedScene" uid="uid://cf1gx5raddfsx" path="res://Enemies/Enemy.tscn" id="7_haafd"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -13,6 +14,9 @@ script = ExtResource("1_n2juu")
 
 [node name="Dungeon" parent="." instance=ExtResource("2_ew2mm")]
 layer_0/tile_data = PackedInt32Array(65538, 0, 0, 65539, 0, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("7_haafd")]
+position = Vector2(64, 64)
 
 [node name="Player" parent="." instance=ExtResource("3_u20kj")]
 
