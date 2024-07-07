@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Enemies/Projectile.gd" id="1_x51da"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56inw"]
-radius = 12.0
+radius = 8.0
 
 [node name="Projectile" type="CharacterBody2D"]
 y_sort_enabled = true

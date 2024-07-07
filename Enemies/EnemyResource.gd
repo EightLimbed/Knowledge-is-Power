@@ -12,7 +12,7 @@ class_name Enemy
 #damage per hit
 @export var damage : int
 #time between attacks in seconds
-@export var attack_speed : int
+@export var attack_speed : float
 #maximum health
 @export var max_health : int
 #walk speed
@@ -35,4 +35,7 @@ class_name Enemy
 @export var attack_distance : int
 #distance where enemy starts chasing, in pixels
 @export var agro_distance : int
+
+#difficulty weight
+@export var difficulty : int
 

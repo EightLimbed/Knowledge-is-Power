@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c7an05lnwvdpo" path="res://UI/HUD/ProgressBars/Art/HealthSymbol.png" id="4_gyhjo"]
 
 [node name="HealthBar" type="TextureProgressBar"]
+z_index = 1
+z_as_relative = false
 texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

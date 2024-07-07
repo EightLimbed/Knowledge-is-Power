@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=12 format=3 uid="uid://d35or6ygc41gw"]
+
+[ext_resource type="Texture2D" uid="uid://bap1taibwjhlf" path="res://Enemies/Shooter/Art/ShooterBullet.png" id="1_od11l"]
+[ext_resource type="Script" path="res://Enemies/EnemyResource.gd" id="2_j8wv6"]
+[ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="3_7v54h"]
+[ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="4_nborg"]
+[ext_resource type="Texture2D" uid="uid://dc7j1485ff2qf" path="res://Player/Art/Player90.png" id="5_ppe5y"]
+[ext_resource type="Texture2D" uid="uid://unqu1bc5dobe" path="res://Player/Art/Player135.png" id="6_5pu2l"]
+[ext_resource type="Texture2D" uid="uid://dovndm3ky28gl" path="res://Player/Art/Player180.png" id="7_xm5il"]
+[ext_resource type="Texture2D" uid="uid://d2nj4gsvb2vkx" path="res://Player/Art/Player225.png" id="8_r27ta"]
+[ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="9_8pqvq"]
+[ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="10_caaqe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4aymc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7v54h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nborg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ppe5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5pu2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xm5il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r27ta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8pqvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_caaqe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+resource_name = "Sniper Enemy"
+script = ExtResource("2_j8wv6")
+sprite_frames = SubResource("SpriteFrames_4aymc")
+projectile_texture = ExtResource("1_od11l")
+damage = 30
+attack_speed = 1.0
+max_health = 30
+speed = 15000
+multishot = 1
+spread = 0
+proj_lifetime = 3
+proj_speed = 60000
+hover_distance = 300
+attack_distance = 250
+agro_distance = 500
+difficulty = 3

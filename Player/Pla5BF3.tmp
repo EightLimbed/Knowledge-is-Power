@@ -53,6 +53,10 @@ y_sort_enabled = true
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_nm3bf")
+dash = null
+dash_cooldown = null
+health = null
+max_health = null
 
 [node name="PlayerTexture" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

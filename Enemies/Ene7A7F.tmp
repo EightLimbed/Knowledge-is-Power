@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf1gx5raddfsx"]
+[gd_scene load_steps=9 format=3 uid="uid://cf1gx5raddfsx"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_0r5i7"]
 [ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="2_nfgna"]
 [ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="3_bgy8m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hekt5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jyvh"]
 size = Vector2(32, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_itkgr"]
@@ -27,9 +27,6 @@ radius = 250.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_whwb6"]
 radius = 500.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jyvh"]
-size = Vector2(32, 32)
-
 [node name="Enemy" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 4
@@ -37,7 +34,7 @@ collision_mask = 5
 script = ExtResource("1_0r5i7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hekt5")
+shape = SubResource("RectangleShape2D_0jyvh")
 
 [node name="EnemyTexture" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -81,6 +78,8 @@ one_shot = true
 autostart = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_bgy8m")]
+z_index = 1
+z_as_relative = false
 custom_minimum_size = Vector2(64, 16)
 offset_left = -24.0
 offset_top = -80.0
@@ -90,10 +89,9 @@ offset_bottom = -64.0
 [node name="DamageHitbox" type="Area2D" parent="."]
 z_as_relative = false
 collision_layer = 0
-collision_mask = 8
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
-position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_0jyvh")
 
 [connection signal="body_entered" from="HoverDistance" to="." method="_on_hover_distance_body_entered"]

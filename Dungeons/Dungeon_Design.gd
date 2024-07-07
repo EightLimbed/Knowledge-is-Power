@@ -18,12 +18,6 @@ func design_dungeon(coordinates: Vector2, room_count, branch_rarity):
 		if random.randi_range(0,branch_rarity-1) == 0:
 			position = room_centers[random.randi_range(1,room_centers.size()-2)]
 	position = coordinates
-	#queue_redraw()
-
-#temporary testing to show dungeon layout, maybe will use same thng for minimap
-func _draw():
-	#draw_polyline(ground, Color.GREEN, 1, false)
-	pass
 
 #creates rooms
 func design_room():

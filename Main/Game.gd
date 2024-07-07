@@ -6,7 +6,19 @@ extends Node2D
 
 func _process(_delta):
 	healthbar.update(0, player.health, player.max_health)
-	dashbar.update(0, player.dash, player.dash_cooldown)
+	dashbar.update(0, player.dash_charge, player.dash_cooldown)
+	if healthbar.visible:
+		dashbar.position.y = 28
+	else:
+		dashbar.position.y = 4
 
 func _on_dungeon_next_level():
 	$Player.position = Vector2(0,0)
+	$Player.health = $Player.max_health
+	clear_children($EnemiesContainer)
+	clear_children($ProjectilesContainer)
+
+#clears children of a node
+func clear_children(node):
+	for n in node.get_children():
+		n.queue_free()

@@ -13,7 +13,8 @@ var lifetime : float
 func _ready():
 	$Lifetime.wait_time = lifetime
 	global_position = spawn_pos
-	$Sprite2D.texture = texture
+	if texture:
+		$Sprite2D.texture = texture
 
 func _process(delta):
 	velocity = Vector2(speed,0).rotated(rot)*delta
