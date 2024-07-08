@@ -12,6 +12,9 @@ var hit : float
 var bullets_total : int = 0
 var projectile = preload("res://Enemies/Projectile.tscn")
 
+#damage indicators
+var damage_indicator = preload("res://DamageIndicator.tscn")
+
 #setup
 var health
 @export var spawn_pos : Vector2
@@ -34,10 +37,9 @@ func _ready():
 	global_position = spawn_pos
 
 func _physics_process(delta):
-	#updates health and does immunity frames, also kills enemy if they have no health
+	#updates health and does immunity frames
 	health_bar.update(0, health, profile.max_health)
 	hit -= delta
-	death()
 
 	#behavior
 	if agro:
@@ -64,7 +66,7 @@ func input_to_player():
 	#makes enemy not move on an axis, if it is close to the player on it
 	if player.global_position.x < global_position.x + 48 and player.global_position.x > global_position.x - 48:
 		input.x = 0
-	if player.global_position.y < global_position.y + 24 and player.global_position.y > global_position.y - 24:
+	elif player.global_position.y < global_position.y + 24 and player.global_position.y > global_position.y - 24:
 		input.y = 0
 
 #shoots bullets with stats from profile
@@ -147,8 +149,13 @@ func _on_attack_timer_timeout():
 #takes damage
 func _on_damage_hitbox_body_entered(body):
 	if body.name.begins_with("PProj") and hit <= 0:
-		health -= 10
-		hit = 0.05
+		take_damage(10)
+
+func take_damage(damage):
+	health -= damage
+	hit = 0.05
+	$BloodSplatter.emitting = true
+	death()
 
 #kills enemy when health is below zero
 func death():

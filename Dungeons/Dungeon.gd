@@ -38,7 +38,6 @@ func new_level():
 	#renders dungeon from design
 	render_dungeon()
 	next_level.emit()
-	print(current_level)
 
 #remember to use multiple tilesets
 func render_dungeon():

@@ -1,42 +1,42 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=12 format=3 uid="uid://chchf10ok2ih7"]
 
-[ext_resource type="Texture2D" uid="uid://bap1taibwjhlf" path="res://Enemies/Shooter/Art/ShooterBullet.png" id="1_yb7mc"]
+[ext_resource type="Texture2D" uid="uid://cp3hywjsb4qmw" path="res://Enemies/Sprayer/Art/SprayerBullet.png" id="1_51dxo"]
 [ext_resource type="Script" path="res://Enemies/EnemyResource.gd" id="2_heh8a"]
-[ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="3_6nksq"]
-[ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="4_gykvr"]
-[ext_resource type="Texture2D" uid="uid://dc7j1485ff2qf" path="res://Player/Art/Player90.png" id="5_tpdxb"]
-[ext_resource type="Texture2D" uid="uid://unqu1bc5dobe" path="res://Player/Art/Player135.png" id="6_dd1wh"]
-[ext_resource type="Texture2D" uid="uid://dovndm3ky28gl" path="res://Player/Art/Player180.png" id="7_yp1ta"]
-[ext_resource type="Texture2D" uid="uid://d2nj4gsvb2vkx" path="res://Player/Art/Player225.png" id="8_cmiox"]
-[ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="9_6fub7"]
-[ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="10_givav"]
+[ext_resource type="Texture2D" uid="uid://bqiy04j4qek6d" path="res://Enemies/Sprayer/Art/Sprayer0.png" id="3_6t11u"]
+[ext_resource type="Texture2D" uid="uid://n6pwt4v8lupl" path="res://Enemies/Sprayer/Art/Sprayer45.png" id="4_l3gt7"]
+[ext_resource type="Texture2D" uid="uid://ctxcea1ayhr67" path="res://Enemies/Sprayer/Art/Sprayer90.png" id="5_3mcqi"]
+[ext_resource type="Texture2D" uid="uid://bfqn7nrg7ld2i" path="res://Enemies/Sprayer/Art/Sprayer135.png" id="6_o16vs"]
+[ext_resource type="Texture2D" uid="uid://8vjn7rimerb0" path="res://Enemies/Sprayer/Art/Sprayer180.png" id="7_oiphk"]
+[ext_resource type="Texture2D" uid="uid://36vp5rr44ijl" path="res://Enemies/Sprayer/Art/Sprayer225.png" id="8_km832"]
+[ext_resource type="Texture2D" uid="uid://cvjqvdu4w8ci7" path="res://Enemies/Sprayer/Art/Sprayer270.png" id="9_pccn5"]
+[ext_resource type="Texture2D" uid="uid://dbmp3ytltg4dn" path="res://Enemies/Sprayer/Art/Sprayer315.png" id="10_r3omr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4aymc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_6nksq")
+"texture": ExtResource("3_6t11u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_gykvr")
+"texture": ExtResource("4_l3gt7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_tpdxb")
+"texture": ExtResource("5_3mcqi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_dd1wh")
+"texture": ExtResource("6_o16vs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_yp1ta")
+"texture": ExtResource("7_oiphk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_cmiox")
+"texture": ExtResource("8_km832")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_6fub7")
+"texture": ExtResource("9_pccn5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_givav")
+"texture": ExtResource("10_r3omr")
 }],
 "loop": true,
 "name": &"default",
@@ -47,7 +47,7 @@ animations = [{
 resource_name = "Sprayer Enemy"
 script = ExtResource("2_heh8a")
 sprite_frames = SubResource("SpriteFrames_4aymc")
-projectile_texture = ExtResource("1_yb7mc")
+projectile_texture = ExtResource("1_51dxo")
 damage = 5
 attack_speed = 0.1
 max_health = 60
@@ -59,4 +59,4 @@ proj_speed = 15000
 hover_distance = 100
 attack_distance = 150
 agro_distance = 500
-difficulty = 5
+difficulty = 1

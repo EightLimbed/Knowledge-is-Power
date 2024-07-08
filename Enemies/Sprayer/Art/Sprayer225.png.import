@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ohifpkhtsk4"
-path="res://.godot/imported/ShooterBullet.png-7e4dcf8871362425f8c7f6d7bf968d6c.ctex"
+uid="uid://36vp5rr44ijl"
+path="res://.godot/imported/Sprayer225.png-75daff23e76a8011dfdf76740545921a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Sprayer/Art/ShooterBullet.png"
-dest_files=["res://.godot/imported/ShooterBullet.png-7e4dcf8871362425f8c7f6d7bf968d6c.ctex"]
+source_file="res://Enemies/Sprayer/Art/Sprayer225.png"
+dest_files=["res://.godot/imported/Sprayer225.png-75daff23e76a8011dfdf76740545921a.ctex"]
 
 [params]
 

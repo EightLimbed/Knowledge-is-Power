@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="All_Levels" load_steps=8 format=3 uid="uid://rvoqnvlx36fi"]
+[gd_resource type="Resource" script_class="All_Levels" load_steps=7 format=3 uid="uid://rvoqnvlx36fi"]
 
-[ext_resource type="Resource" uid="uid://csgh6ylepdv37" path="res://Enemies/Shooter/Shooter.tres" id="1_rjs3i"]
 [ext_resource type="Script" path="res://Dungeons/Levels/LevelsResource.gd" id="1_x8hug"]
 [ext_resource type="Resource" uid="uid://d35or6ygc41gw" path="res://Enemies/Sniper/Sniper.tres" id="2_lwt5h"]
 [ext_resource type="Script" path="res://Dungeons/Levels/LevelResource.gd" id="2_ufhxx"]
@@ -8,9 +7,9 @@
 
 [sub_resource type="Resource" id="Resource_aqlla"]
 script = ExtResource("2_ufhxx")
-possible_enemies = Array[Resource("res://Enemies/EnemyResource.gd")]([ExtResource("1_rjs3i")])
-room_difficulty = 10
-rooms = 5
+possible_enemies = Array[Resource("res://Enemies/EnemyResource.gd")]([ExtResource("4_q8dmc")])
+room_difficulty = 20
+rooms = 10
 branch_chance = 1
 
 [sub_resource type="Resource" id="Resource_mgv4b"]
