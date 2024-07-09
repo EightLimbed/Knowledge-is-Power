@@ -12,9 +12,6 @@ var hit : float
 var bullets_total : int = 0
 var projectile = preload("res://Enemies/Projectile.tscn")
 
-#damage indicators
-var damage_indicator = preload("res://DamageIndicator.tscn")
-
 #setup
 var health
 @export var spawn_pos : Vector2
