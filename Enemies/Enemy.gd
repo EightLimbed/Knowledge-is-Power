@@ -81,6 +81,7 @@ func shoot():
 		instance.lifetime = profile.proj_lifetime
 		instance.speed = profile.proj_speed
 		instance.damage = profile.damage
+		instance.piercing = profile.piercing
 		instance.name = "EProj"+str(bullets_total)
 		#adds child
 		main.add_child.call_deferred(instance)

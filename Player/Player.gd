@@ -80,6 +80,7 @@ func direction_texture(dir: Vector2):
 func _on_damage_hitbox_body_entered(body):
 	if body.name.begins_with("EProj") and hit <= 0:
 		health -= body.damage
+		$BloodSplatter.emitting = true
 		hit = 0.1
 
 #handles dash

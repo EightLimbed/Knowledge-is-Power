@@ -52,8 +52,8 @@ func render_dungeon():
 		set_cell(0, tile, 0, Vector2i(1,0), 0)
 		set_cell(1, tile+Vector2(-1,-1), -1)
 
-	for tile in room_centers:
-		spawn_enemies(tile, levels.levels[current_level])
+	for i in room_centers.size()-2:
+		spawn_enemies(room_centers[i+1], levels.levels[current_level])
 
 	#places portal frame at start
 	set_cell(1, room_centers[0]+Vector2(-3,-3), 1, Vector2i(0,0), 0)

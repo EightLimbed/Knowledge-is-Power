@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://imjbg5m6uhty"]
+[gd_scene load_steps=15 format=3 uid="uid://imjbg5m6uhty"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_nm3bf"]
 [ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="2_whrst"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d2nj4gsvb2vkx" path="res://Player/Art/Player225.png" id="5_vyoj0"]
 [ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="7_1inqp"]
 [ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="9_cxcyf"]
+[ext_resource type="PackedScene" uid="uid://bje3fr5ph810v" path="res://Grimoires/Grimoire.tscn" id="10_dyssd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xglce"]
 animations = [{
@@ -48,6 +49,22 @@ size = Vector2(32, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bthhx"]
 radius = 8.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y1rfy"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 32, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+gravity = Vector3(0, 200, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_max = 100.0
+scale_min = 0.1
+scale_max = 4.0
+color = Color(0.678431, 0, 0.027451, 1)
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
@@ -65,10 +82,27 @@ shape = SubResource("RectangleShape2D_ww0up")
 
 [node name="DamageHitbox" type="Area2D" parent="."]
 z_as_relative = false
-collision_layer = 0
-collision_mask = 12
+collision_layer = 16
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
 shape = SubResource("CircleShape2D_bthhx")
+
+[node name="GrimoiresContainer" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Grimoires" parent="GrimoiresContainer" instance=ExtResource("10_dyssd")]
+
+[node name="BloodSplatter" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, -16)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_y1rfy")
+lifetime = 0.6
+one_shot = true
+preprocess = 0.5
+trail_sections = 2
+trail_section_subdivisions = 1
 
 [connection signal="body_entered" from="DamageHitbox" to="." method="_on_damage_hitbox_body_entered"]

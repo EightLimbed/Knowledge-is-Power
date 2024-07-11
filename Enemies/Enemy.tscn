@@ -134,7 +134,7 @@ offset_bottom = -64.0
 
 [node name="DamageHitbox" type="Area2D" parent="."]
 z_as_relative = false
-collision_layer = 0
+collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
@@ -152,6 +152,10 @@ one_shot = true
 preprocess = 0.5
 trail_sections = 2
 trail_section_subdivisions = 1
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-2, -36)
+scale = Vector2(4.2, 4.4)
 
 [connection signal="body_entered" from="HoverDistance" to="." method="_on_hover_distance_body_entered"]
 [connection signal="body_exited" from="HoverDistance" to="." method="_on_hover_distance_body_exited"]

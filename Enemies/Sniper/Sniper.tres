@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=12 format=3 uid="uid://d35or6ygc41gw"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=11 format=3 uid="uid://d35or6ygc41gw"]
 
-[ext_resource type="Texture2D" uid="uid://bap1taibwjhlf" path="res://Enemies/Shooter/Art/ShooterBullet.png" id="1_od11l"]
 [ext_resource type="Script" path="res://Enemies/EnemyResource.gd" id="2_j8wv6"]
 [ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="3_7v54h"]
 [ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="4_nborg"]
@@ -47,7 +46,6 @@ animations = [{
 resource_name = "Sniper Enemy"
 script = ExtResource("2_j8wv6")
 sprite_frames = SubResource("SpriteFrames_4aymc")
-projectile_texture = ExtResource("1_od11l")
 damage = 30
 attack_speed = 2.0
 max_health = 30
@@ -56,6 +54,7 @@ multishot = 1
 spread = 0
 proj_lifetime = 3
 proj_speed = 60000
+piercing = 100
 hover_distance = 300
 attack_distance = 250
 agro_distance = 500

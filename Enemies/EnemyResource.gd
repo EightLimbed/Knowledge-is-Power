@@ -28,6 +28,9 @@ class_name Enemy
 #projectile speed
 @export var proj_speed : int
 
+#piercing
+@export var piercing : int
+
 #behaviors
 #how far pathfinding keeps enemy away from the player, in pixels
 @export var hover_distance : int

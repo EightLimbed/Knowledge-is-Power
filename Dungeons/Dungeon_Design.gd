@@ -59,7 +59,7 @@ func design_path():
 
 	#rebuilds direction until the path does not intersect with another room
 	while (ground.has(path_length*direction+position) or walls.has(path_length*direction+position)):
-		position = room_centers[random.randi_range(0,room_centers.size()-2)]
+		position = room_centers[random.randi_range(1,room_centers.size()-2)]
 		direction.x = directions[random.randi_range(0,1)]
 		direction.y = directions[random.randi_range(0,1)]
 
