@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_rl2hy"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -60, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, -20, 0, 0, 0, 0, -60, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -60, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, -30, 0, 0, 0, 0, -60, 0)
 }
 point_count = 5
 
@@ -28,4 +28,4 @@ y_sort_enabled = true
 texture_filter = 1
 rotation = -0.463648
 texture = ExtResource("2_mvtcq")
-offset = Vector2(0, -20)
+offset = Vector2(0, -32)

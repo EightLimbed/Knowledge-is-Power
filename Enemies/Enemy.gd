@@ -10,21 +10,26 @@ var hit : float
 
 #for naming bullets properly
 var bullets_total : int = 0
-var projectile = preload("res://Enemies/Projectile.tscn")
+var projectile = preload("res://Communal/Projectiles/Projectile.tscn")
+
+#blood splatter
+var blood_splatter = preload("res://Communal/Afterimages/Bloodstain.tscn")
+var afterimages_main
 
 #setup
 var health
 @export var spawn_pos : Vector2
 var random = RandomNumberGenerator.new()
 @export var profile : Enemy
-var main
+var projectiles_main
 var player
 @onready var texture = $EnemyTexture
 @onready var attack_speed = $AttackTimer
 @onready var health_bar = $HealthBar
 
 func _ready():
-	main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
+	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
+	afterimages_main = get_tree().get_root().get_node("Game").get_node("AfterimagesContainer")
 	player = get_tree().get_root().get_node("Game").get_node("Player")
 	#gets things from profile
 	texture.sprite_frames = profile.sprite_frames
@@ -40,6 +45,7 @@ func _physics_process(delta):
 
 	#behavior
 	if agro:
+		visible = true
 		input_to_player()
 		direction_texture()
 		if not hover and not attacking:
@@ -47,24 +53,13 @@ func _physics_process(delta):
 		elif hover:
 			velocity = -input.normalized()*profile.speed*delta*Vector2(0.5,0.25)
 		move_and_slide()
+	else:
+		visible = false
 
 #gets enemy pointing towards player
 func input_to_player():
-	#gets inputs
-	if player.global_position.x > global_position.x + 96:
-		input.x = 1
-	if player.global_position.x < global_position.x - 96:
-		input.x = -1
-	if player.global_position.y > global_position.y + 48:
-		input.y = 1
-	if player.global_position.y < global_position.y - 48:
-		input.y = -1
+	input = (player.position-position).normalized()
 
-	#makes enemy not move on an axis, if it is close to the player on it
-	if player.global_position.x < global_position.x + 48 and player.global_position.x > global_position.x - 48:
-		input.x = 0
-	elif player.global_position.y < global_position.y + 24 and player.global_position.y > global_position.y - 24:
-		input.y = 0
 
 #shoots bullets with stats from profile
 func shoot():
@@ -73,7 +68,7 @@ func shoot():
 		#start for spread
 		var instance = projectile.instantiate()
 		#sets starting transfom
-		instance.spawn_pos = global_position
+		instance.global_position = global_position
 		#sets rotation, modified by spread
 		instance.rot = global_position.angle_to_point(player.global_position) + i*deg_to_rad(profile.spread) - spread_offset
 		#sets projectile stats and texture
@@ -84,34 +79,34 @@ func shoot():
 		instance.piercing = profile.piercing
 		instance.name = "EProj"+str(bullets_total)
 		#adds child
-		main.add_child.call_deferred(instance)
+		projectiles_main.add_child.call_deferred(instance)
 		bullets_total += 1
 
 #directional costumes
 func direction_texture():
 	#0
-	if input == Vector2(0,1):
+	if round(input) == Vector2(0,1):
 		texture.frame = 0
 	#45
-	elif input == Vector2(-1,1):
+	elif round(input) == Vector2(-1,1):
 		texture.frame = 1
 	#90
-	elif input == Vector2(-1,0):
+	elif round(input) == Vector2(-1,0):
 		texture.frame = 2
 	#135
-	elif input == Vector2(-1,-1):
+	elif round(input) == Vector2(-1,-1):
 		texture.frame = 3
 	#180
-	elif input == Vector2(0,-1):
+	elif round(input) == Vector2(0,-1):
 		texture.frame = 4
 	#225
-	elif input == Vector2(1,-1):
+	elif round(input) == Vector2(1,-1):
 		texture.frame = 5
 	#270
-	elif input == Vector2(1,0):
+	elif round(input) == Vector2(1,0):
 		texture.frame = 6
 	#315
-	elif input == Vector2(1,1):
+	elif round(input) == Vector2(1,1):
 		texture.frame = 7
 
 #behavior signals
@@ -152,7 +147,7 @@ func _on_damage_hitbox_body_entered(body):
 func take_damage(damage):
 	health -= damage
 	hit = 0.05
-	$BloodSplatter.emitting = true
+	splatter()
 	death()
 
 #kills enemy when health is below zero
@@ -160,3 +155,8 @@ func death():
 	if health <= 0:
 		#add death animation or something
 		queue_free()
+
+func splatter():
+	var instance = blood_splatter.instantiate()
+	instance.global_position = global_position
+	afterimages_main.add_child.call_deferred(instance)

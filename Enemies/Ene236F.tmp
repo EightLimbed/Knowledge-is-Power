@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cf1gx5raddfsx"]
+[gd_scene load_steps=18 format=3 uid="uid://cf1gx5raddfsx"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_0r5i7"]
 [ext_resource type="Texture2D" uid="uid://bqiy04j4qek6d" path="res://Enemies/Sprayer/Art/Sprayer0.png" id="2_jhm06"]
@@ -57,6 +57,22 @@ radius = 500.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jyvh"]
 size = Vector2(32, 32)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lrukk"]
+emission_shape = 3
+emission_box_extents = Vector3(8, 32, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+gravity = Vector3(0, 200, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_max = 100.0
+scale_min = 0.1
+scale_max = 4.0
+color = Color(0.678431, 0, 0.027451, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -124,6 +140,18 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_0jyvh")
+
+[node name="BloodSplatter" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, -16)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_lrukk")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.9
+trail_sections = 2
+trail_section_subdivisions = 1
 
 [connection signal="body_entered" from="HoverDistance" to="." method="_on_hover_distance_body_entered"]
 [connection signal="body_exited" from="HoverDistance" to="." method="_on_hover_distance_body_exited"]

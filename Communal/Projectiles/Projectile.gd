@@ -4,7 +4,6 @@ extends CharacterBody2D
 
 var speed : int = 100
 var rot : float
-var spawn_pos : Vector2
 var spawn_rot : float
 var texture : Texture2D
 var lifetime : float
@@ -13,14 +12,13 @@ var piercing : float = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Lifetime.wait_time = lifetime
-	global_position = spawn_pos
 	rotation = rot + deg_to_rad(90)
 	piercing += 1
 	if texture:
 		$Sprite2D.texture = texture
 
 func _process(delta):
-	$Deathtime.wait_time = delta
+	$Deathtime.wait_time = delta*2
 	velocity = Vector2(speed,0).rotated(rot)*delta
 	move_and_slide()
 

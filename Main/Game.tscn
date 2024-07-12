@@ -26,6 +26,9 @@ y_sort_enabled = true
 [node name="ProjectilesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="AfterimagesContainer" type="Node2D" parent="."]
+y_sort_enabled = true
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="FPS" type="Label" parent="HUD"]

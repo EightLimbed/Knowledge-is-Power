@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://cf8tu2iaxa5fk"]
+
+[ext_resource type="Texture2D" uid="uid://cp3gn7kqugkpo" path="res://Communal/Art/Bloodstain1.png" id="1_cf25t"]
+[ext_resource type="Texture2D" uid="uid://c0xrg6sr4j1tk" path="res://Communal/Art/Bloodstain2.png" id="2_atk7k"]
+[ext_resource type="Script" path="res://Communal/Afterimages/Bloodstain.gd" id="2_miqdg"]
+[ext_resource type="Texture2D" uid="uid://bcbxnw0m6kw6d" path="res://Communal/Art/Bloodstain3.png" id="3_pnw52"]
+[ext_resource type="Texture2D" uid="uid://c1k78q3gck13a" path="res://Communal/Art/Bloodstain4.png" id="4_113xm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0f4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cf25t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_atk7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pnw52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_113xm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o8qu3"]
+emission_shape = 3
+emission_box_extents = Vector3(8, 32, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+gravity = Vector3(0, 200, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 4.0
+color = Color(0.678431, 0, 0.027451, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[node name="Bloodstain" type="AnimatedSprite2D"]
+self_modulate = Color(1, 1, 1, 0.392157)
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_w0f4c")
+speed_scale = 0.0
+offset = Vector2(0, 16)
+script = ExtResource("2_miqdg")
+
+[node name="Lifetime" type="Timer" parent="."]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="BloodSplatter" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, -16)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_o8qu3")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
