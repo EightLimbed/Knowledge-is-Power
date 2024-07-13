@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://gjqrao5c4hiw"]
+
+[ext_resource type="Script" path="res://UI/HUD/Crosshair/AimingCrosshair.gd" id="1_d7ujo"]
+[ext_resource type="Texture2D" uid="uid://csanoju38efe3" path="res://UI/HUD/Crosshair/Art/AimingCrosshair.png" id="2_otntf"]
+
+[node name="AimingCrosshair" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_d7ujo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -16)
+texture = ExtResource("2_otntf")
+offset = Vector2(0, 16)

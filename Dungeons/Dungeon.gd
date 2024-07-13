@@ -52,6 +52,7 @@ func render_dungeon():
 		set_cell(0, tile, 0, Vector2i(1,0), 0)
 		set_cell(1, tile+Vector2(-1,-1), -1)
 
+	#spawns enemies around room centers
 	for i in room_centers.size()-2:
 		spawn_enemies(room_centers[i+1], levels.levels[current_level])
 

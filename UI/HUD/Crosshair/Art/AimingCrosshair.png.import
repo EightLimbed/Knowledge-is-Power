@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcbxnw0m6kw6d"
-path="res://.godot/imported/Bloodstain3.png-303405325ccb7d62f2eec2f6b258eeb2.ctex"
+uid="uid://csanoju38efe3"
+path="res://.godot/imported/AimingCrosshair.png-d43c0cd58823a061486a09bb25dbf96d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Communal/Art/Bloodstain3.png"
-dest_files=["res://.godot/imported/Bloodstain3.png-303405325ccb7d62f2eec2f6b258eeb2.ctex"]
+source_file="res://UI/HUD/Crosshair/Art/AimingCrosshair.png"
+dest_files=["res://.godot/imported/AimingCrosshair.png-d43c0cd58823a061486a09bb25dbf96d.ctex"]
 
 [params]
 

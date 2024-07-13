@@ -5,11 +5,11 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fte7u"]
 load_path = "res://.godot/imported/ShooterBullet.png-03e0756775c01d8bce3bcec4a6ee99d9.ctex"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3j2h4"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0l5h"]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_56inw"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j2h4"]
+radius = 1.0
 
 [node name="Projectile" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -22,28 +22,18 @@ texture_filter = 1
 texture = SubResource("CompressedTexture2D_fte7u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3j2h4")
+shape = SubResource("CircleShape2D_b0l5h")
 
 [node name="Lifetime" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="WallDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_56inw")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-8, -8, 16, 16)
-
-[node name="Deathtime" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection"]
+shape = SubResource("CircleShape2D_3j2h4")
 
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Deathtime" to="." method="_on_deathtime_timeout"]
+[connection signal="body_entered" from="WallDetection" to="." method="_on_wall_detection_body_entered"]

@@ -1,25 +1,25 @@
 [gd_scene load_steps=8 format=3 uid="uid://cf8tu2iaxa5fk"]
 
-[ext_resource type="Texture2D" uid="uid://cp3gn7kqugkpo" path="res://Communal/Art/Bloodstain1.png" id="1_cf25t"]
-[ext_resource type="Texture2D" uid="uid://c0xrg6sr4j1tk" path="res://Communal/Art/Bloodstain2.png" id="2_atk7k"]
-[ext_resource type="Script" path="res://Communal/Afterimages/Bloodstain.gd" id="2_miqdg"]
-[ext_resource type="Texture2D" uid="uid://bcbxnw0m6kw6d" path="res://Communal/Art/Bloodstain3.png" id="3_pnw52"]
-[ext_resource type="Texture2D" uid="uid://c1k78q3gck13a" path="res://Communal/Art/Bloodstain4.png" id="4_113xm"]
+[ext_resource type="Texture2D" uid="uid://cp3gn7kqugkpo" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain1.png" id="1_ms7qa"]
+[ext_resource type="Texture2D" uid="uid://c0xrg6sr4j1tk" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain2.png" id="2_a7e17"]
+[ext_resource type="Texture2D" uid="uid://bcbxnw0m6kw6d" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain3.png" id="3_24sf3"]
+[ext_resource type="Texture2D" uid="uid://c1k78q3gck13a" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain4.png" id="4_o8n3m"]
+[ext_resource type="Script" path="res://Communal/Afterimages/Bloodstains/Bloodstains.gd" id="5_irrr4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0f4c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_cf25t")
+"texture": ExtResource("1_ms7qa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_atk7k")
+"texture": ExtResource("2_a7e17")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_pnw52")
+"texture": ExtResource("3_24sf3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_113xm")
+"texture": ExtResource("4_o8n3m")
 }],
 "loop": true,
 "name": &"default",
@@ -52,11 +52,11 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_w0f4c")
 speed_scale = 0.0
 offset = Vector2(0, 16)
-script = ExtResource("2_miqdg")
+script = ExtResource("5_irrr4")
 
 [node name="Lifetime" type="Timer" parent="."]
 process_callback = 0
-wait_time = 10.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 

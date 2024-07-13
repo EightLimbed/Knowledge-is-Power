@@ -24,12 +24,9 @@ class_name Enemy
 #bullet spread between each shot
 @export var spread : int
 #bullet lifetime in seconds
-@export var proj_lifetime : int
+@export var projectile_lifetime : int
 #projectile speed
-@export var proj_speed : int
-
-#piercing
-@export var piercing : int
+@export var projectile_speed : int
 
 #behaviors
 #how far pathfinding keeps enemy away from the player, in pixels

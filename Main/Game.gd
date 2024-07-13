@@ -4,6 +4,9 @@ extends Node2D
 @onready var healthbar = $HUD/HealthBar
 @onready var dashbar = $HUD/DashBar
 
+#func _ready():
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func _process(_delta):
 	healthbar.update(0, player.health, player.max_health)
 	dashbar.update(0, player.dash_charge, player.dash_cooldown)

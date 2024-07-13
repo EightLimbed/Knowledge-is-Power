@@ -9,11 +9,10 @@ var input : Vector2
 var hit : float
 
 #for naming bullets properly
-var bullets_total : int = 0
-var projectile = preload("res://Communal/Projectiles/Projectile.tscn")
+@onready var projectile_emitter = $ProjectileEmitter
 
 #blood splatter
-var blood_splatter = preload("res://Communal/Afterimages/Bloodstain.tscn")
+var blood_splatter = preload("res://Communal/Afterimages/Bloodstains/Bloodstains.tscn")
 var afterimages_main
 
 #setup
@@ -59,28 +58,6 @@ func _physics_process(delta):
 #gets enemy pointing towards player
 func input_to_player():
 	input = (player.position-position).normalized()
-
-
-#shoots bullets with stats from profile
-func shoot():
-	var spread_offset = deg_to_rad(profile.spread)*(profile.multishot-1)/2
-	for i in profile.multishot:
-		#start for spread
-		var instance = projectile.instantiate()
-		#sets starting transfom
-		instance.global_position = global_position
-		#sets rotation, modified by spread
-		instance.rot = global_position.angle_to_point(player.global_position) + i*deg_to_rad(profile.spread) - spread_offset
-		#sets projectile stats and texture
-		instance.texture = profile.projectile_texture
-		instance.lifetime = profile.proj_lifetime
-		instance.speed = profile.proj_speed
-		instance.damage = profile.damage
-		instance.piercing = profile.piercing
-		instance.name = "EProj"+str(bullets_total)
-		#adds child
-		projectiles_main.add_child.call_deferred(instance)
-		bullets_total += 1
 
 #directional costumes
 func direction_texture():
@@ -136,13 +113,14 @@ func _on_hover_distance_body_exited(_body):
 #attacking
 func _on_attack_timer_timeout():
 	if attacking:
-		shoot()
+		#shoot(texture, spawn, target, multishot, spread, lifetime, speed, damage, piercing)
+		projectile_emitter.shoot(profile.projectile_texture, "EProj", global_position, player.global_position, profile.multishot, profile.spread, profile.projectile_lifetime, profile.projectile_speed, profile.damage)
 	attack_speed.start()
 
 #takes damage
 func _on_damage_hitbox_body_entered(body):
 	if body.name.begins_with("PProj") and hit <= 0:
-		take_damage(10)
+		take_damage(body.damage)
 
 func take_damage(damage):
 	health -= damage

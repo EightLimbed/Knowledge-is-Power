@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cf1gx5raddfsx"]
+[gd_scene load_steps=18 format=3 uid="uid://cf1gx5raddfsx"]
 
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_0r5i7"]
 [ext_resource type="Texture2D" uid="uid://bqiy04j4qek6d" path="res://Enemies/Sprayer/Art/Sprayer0.png" id="2_jhm06"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cy8iqqlmxp5fo" path="res://Enemies/Sprayer/Art/Sprayer225.png" id="7_3svlw"]
 [ext_resource type="Texture2D" uid="uid://cbygkswy81fs0" path="res://Enemies/Sprayer/Art/Sprayer270.png" id="8_6yinj"]
 [ext_resource type="Texture2D" uid="uid://d16t26vjmfvk2" path="res://Enemies/Sprayer/Art/Sprayer315.png" id="9_5jbuy"]
+[ext_resource type="PackedScene" uid="uid://biohwhpugn32w" path="res://Communal/Projectiles/ProjectileEmitter.tscn" id="11_lr5qy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hekt5"]
 size = Vector2(32, 16)
@@ -124,6 +125,8 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_0jyvh")
+
+[node name="ProjectileEmitter" parent="." instance=ExtResource("11_lr5qy")]
 
 [connection signal="body_entered" from="HoverDistance" to="." method="_on_hover_distance_body_entered"]
 [connection signal="body_exited" from="HoverDistance" to="." method="_on_hover_distance_body_exited"]

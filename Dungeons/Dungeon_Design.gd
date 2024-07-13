@@ -51,7 +51,7 @@ func design_path():
 	var directions = [-1,1]
 
 	#thickness of path
-	var path_thickness = 4
+	var path_thickness = 6
 	var path_length = 40
 	#build Vector 2 from direction
 	direction.x = directions[random.randi_range(0,1)]

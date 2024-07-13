@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bje3fr5ph810v"]
+
+[ext_resource type="Script" path="res://Grimoires/Default/DefaultGrimoire.gd" id="1_qfwes"]
+[ext_resource type="Texture2D" uid="uid://3xjyklu6tnxg" path="res://Grimoires/Default/Art/DefaultGrimoireClosed.png" id="2_bobdw"]
+[ext_resource type="PackedScene" uid="uid://biohwhpugn32w" path="res://Communal/Projectiles/ProjectileEmitter.tscn" id="3_b6qjn"]
+
+[sub_resource type="Curve2D" id="Curve2D_rl2hy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -60, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, -30, 0, 0, 0, 0, -60, 0)
+}
+point_count = 5
+
+[node name="DefaultGrimoire" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_qfwes")
+
+[node name="Path2D" type="Path2D" parent="."]
+y_sort_enabled = true
+curve = SubResource("Curve2D_rl2hy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+y_sort_enabled = true
+position = Vector2(-60, 0)
+rotation = 0.463648
+rotates = false
+
+[node name="Texture" type="Sprite2D" parent="Path2D/PathFollow2D"]
+y_sort_enabled = true
+texture_filter = 1
+rotation = -0.463648
+texture = ExtResource("2_bobdw")
+offset = Vector2(0, -32)
+
+[node name="ProjectileEmitter" parent="." instance=ExtResource("3_b6qjn")]
+position = Vector2(-60, 0)

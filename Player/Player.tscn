@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d2nj4gsvb2vkx" path="res://Player/Art/Player225.png" id="5_vyoj0"]
 [ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="7_1inqp"]
 [ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="9_cxcyf"]
-[ext_resource type="PackedScene" uid="uid://bje3fr5ph810v" path="res://Grimoires/Grimoire.tscn" id="10_dyssd"]
+[ext_resource type="PackedScene" uid="uid://bje3fr5ph810v" path="res://Grimoires/Default/DefaultGrimoire.tscn" id="10_eelbr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xglce"]
 animations = [{
@@ -56,7 +56,6 @@ motion_mode = 1
 script = ExtResource("1_nm3bf")
 
 [node name="PlayerTexture" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.392157)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_xglce")
 animation = &"Directions"
@@ -77,6 +76,6 @@ shape = SubResource("CircleShape2D_bthhx")
 y_sort_enabled = true
 position = Vector2(0, 8)
 
-[node name="Grimoires" parent="GrimoiresContainer" instance=ExtResource("10_dyssd")]
+[node name="DefaultGrimoire" parent="GrimoiresContainer" instance=ExtResource("10_eelbr")]
 
 [connection signal="body_entered" from="DamageHitbox" to="." method="_on_damage_hitbox_body_entered"]

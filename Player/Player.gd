@@ -17,7 +17,7 @@ var projectile = preload("res://Communal/Projectiles/Projectile.tscn")
 var projectiles_main
 
 #blood splatter
-var blood_splatter = preload("res://Communal/Afterimages/Bloodstain.tscn")
+var blood_splatter = preload("res://Communal/Afterimages/Bloodstains/Bloodstains.tscn")
 var afterimages_main
 
 #stats
@@ -25,14 +25,15 @@ var afterimages_main
 @export var max_health : int = 100
 var hit : float = 0
 
-
 func _ready():
+	#projectiles
 	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
+	#bloodstains
 	afterimages_main = get_tree().get_root().get_node("Game").get_node("AfterimagesContainer")
+	#texture
 	texture = $PlayerTexture
 
 func _physics_process(delta):
-
 	#gets direction of input
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
@@ -45,7 +46,7 @@ func _physics_process(delta):
 
 	#shooting (temporary)
 	if Input.is_action_just_pressed("Mouse"):
-		shoot()
+		pass
 
 	#deals with immunity frames
 	hit -= delta
@@ -110,23 +111,10 @@ func dash(delta):
 	else:
 		dash_charge += delta*500
 
-#shoots bullets
-func shoot():
-	var instance = projectile.instantiate()
-	#sets starting transfom
-	instance.global_position = global_position
-	#sets rotation, modified by spread
-	instance.rot = global_position.angle_to_point(get_global_mouse_position())
-	#sets projectile stats and texture
-	instance.lifetime = 2
-	instance.speed = 30000
-	instance.damage = 10
-	instance.name = "PProj"+str(bullets_total)
-	#adds child
-	projectiles_main.add_child.call_deferred(instance)
-	bullets_total += 1
-
 func splatter():
 	var instance = blood_splatter.instantiate()
 	instance.global_position = global_position
 	afterimages_main.add_child.call_deferred(instance)
+
+func projectiles_from_grimoires():
+	pass

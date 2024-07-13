@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp3gn7kqugkpo"
-path="res://.godot/imported/Bloodstain1.png-65c22e9b543356b0e64b8de9641dd88a.ctex"
+uid="uid://c0xrg6sr4j1tk"
+path="res://.godot/imported/Bloodstain2.png-676354333641b5371cb488c5ab92f5f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Communal/Art/Bloodstain1.png"
-dest_files=["res://.godot/imported/Bloodstain1.png-65c22e9b543356b0e64b8de9641dd88a.ctex"]
+source_file="res://Communal/Afterimages/Bloodstains/Art/Bloodstain2.png"
+dest_files=["res://.godot/imported/Bloodstain2.png-676354333641b5371cb488c5ab92f5f7.ctex"]
 
 [params]
 
