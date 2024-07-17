@@ -70,7 +70,7 @@ func spawn_enemies(current_room, level):
 	while difficulty > 0:
 		var enemy = level.possible_enemies[random.randi_range(0, level.possible_enemies.size()-1)]
 		var instance = base_enemy.instantiate()
-		var spawn_offset = Vector2(random.randi_range(-13,13), random.randi_range(-13,13))
+		var spawn_offset = Vector2(random.randi_range(-14,14), random.randi_range(-14,14))
 		instance.profile = enemy
 		instance.spawn_pos = map_to_local(current_room+spawn_offset)
 		main.add_child.call_deferred(instance)

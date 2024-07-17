@@ -1,14 +1,14 @@
 extends Node2D
 
 #setup
+var random = RandomNumberGenerator.new()
 var projectiles_main
-var bullets_total : int = 0
 var projectile = preload("res://Communal/Projectiles/Projectile.tscn")
 
 func _ready():
 	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
 
-func shoot(texture, label, spawn, target, multishot, spread, lifetime, speed, damage):
+func shoot(texture : Texture2D, label : String, spawn : Vector2, target : Vector2, multishot : int, spread : int, lifetime : float, speed : int, damage : int):
 	var spread_offset = deg_to_rad(spread)*(multishot-1)/2
 	for i in multishot:
 		#start for spread
@@ -22,7 +22,6 @@ func shoot(texture, label, spawn, target, multishot, spread, lifetime, speed, da
 		instance.lifetime = lifetime
 		instance.speed = speed
 		instance.damage = damage
-		instance.name = label+str(bullets_total)
+		instance.name = label+str(random.randi())
 		#adds child
 		projectiles_main.add_child.call_deferred(instance)
-		bullets_total += 1

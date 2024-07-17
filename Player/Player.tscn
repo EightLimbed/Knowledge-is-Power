@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://imjbg5m6uhty"]
+[gd_scene load_steps=15 format=3 uid="uid://imjbg5m6uhty"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_nm3bf"]
 [ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="2_whrst"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btaa4q00u3fmq" path="res://Player/Art/Player270.png" id="7_1inqp"]
 [ext_resource type="Texture2D" uid="uid://fa7xddu7jssm" path="res://Player/Art/Player315.png" id="9_cxcyf"]
 [ext_resource type="PackedScene" uid="uid://bje3fr5ph810v" path="res://Grimoires/Default/DefaultGrimoire.tscn" id="10_eelbr"]
+[ext_resource type="PackedScene" uid="uid://q3rk4cnun5jb" path="res://Grimoires/Heavy/HeavyGrimoire.tscn" id="11_ov2x1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xglce"]
 animations = [{
@@ -76,6 +77,24 @@ shape = SubResource("CircleShape2D_bthhx")
 y_sort_enabled = true
 position = Vector2(0, 8)
 
+[node name="HeavyGrimoire" parent="GrimoiresContainer" instance=ExtResource("11_ov2x1")]
+
 [node name="DefaultGrimoire" parent="GrimoiresContainer" instance=ExtResource("10_eelbr")]
+position = Vector2(0, -8)
+
+[node name="HeavyGrimoire2" parent="GrimoiresContainer" instance=ExtResource("11_ov2x1")]
+
+[node name="DefaultGrimoire2" parent="GrimoiresContainer" instance=ExtResource("10_eelbr")]
+position = Vector2(0, -8)
+
+[node name="HeavyGrimoire3" parent="GrimoiresContainer" instance=ExtResource("11_ov2x1")]
+
+[node name="DefaultGrimoire3" parent="GrimoiresContainer" instance=ExtResource("10_eelbr")]
+position = Vector2(0, -8)
+
+[node name="HeavyGrimoire4" parent="GrimoiresContainer" instance=ExtResource("11_ov2x1")]
+
+[node name="DefaultGrimoire4" parent="GrimoiresContainer" instance=ExtResource("10_eelbr")]
+position = Vector2(0, -8)
 
 [connection signal="body_entered" from="DamageHitbox" to="." method="_on_damage_hitbox_body_entered"]

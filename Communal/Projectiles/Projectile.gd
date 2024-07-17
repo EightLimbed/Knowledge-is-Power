@@ -7,10 +7,10 @@ var direction : float
 var spawn_rot : float
 var texture : Texture2D
 var lifetime : float
-var piercing : float = 1
 
 func _ready():
 	$Lifetime.wait_time = lifetime
+	$Lifetime.start()
 	rotation = direction + deg_to_rad(90)
 	if texture:
 		$Sprite2D.texture = texture

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://q3rk4cnun5jb"]
+
+[ext_resource type="Script" path="res://Grimoires/Heavy/HeavyGrimoire.gd" id="1_py1a1"]
+[ext_resource type="Texture2D" uid="uid://drbork64waa1n" path="res://Grimoires/Heavy/Art/HeavyGrimoireClosed.png" id="2_tfar0"]
+[ext_resource type="Script" path="res://Communal/Projectiles/GiveDamage.gd" id="3_6qajg"]
+
+[sub_resource type="Curve2D" id="Curve2D_47eri"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -40, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, -20, 0, 0, 0, 0, -40, 0)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh0su"]
+size = Vector2(20, 32)
+
+[node name="HeavyGrimoire" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_py1a1")
+
+[node name="Path2D" type="Path2D" parent="."]
+y_sort_enabled = true
+curve = SubResource("Curve2D_47eri")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+y_sort_enabled = true
+position = Vector2(-40, 0)
+rotation = 0.463648
+rotates = false
+
+[node name="Texture" type="Sprite2D" parent="Path2D/PathFollow2D"]
+y_sort_enabled = true
+texture_filter = 1
+rotation = -0.463648
+texture = ExtResource("2_tfar0")
+offset = Vector2(0, -16)
+
+[node name="PProj" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+rotation = -0.463648
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_6qajg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/PProj"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_oh0su")

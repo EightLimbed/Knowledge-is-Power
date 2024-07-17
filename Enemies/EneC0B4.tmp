@@ -1,0 +1,138 @@
+[gd_scene load_steps=18 format=3 uid="uid://cf1gx5raddfsx"]
+
+[ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_0r5i7"]
+[ext_resource type="Texture2D" uid="uid://bqiy04j4qek6d" path="res://Enemies/Sprayer/Art/Sprayer0.png" id="2_jhm06"]
+[ext_resource type="Texture2D" uid="uid://cp7deqqd5ws6p" path="res://Enemies/Sprayer/Art/Sprayer45.png" id="3_4qkvj"]
+[ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="3_bgy8m"]
+[ext_resource type="Texture2D" uid="uid://df0ee61f2r681" path="res://Enemies/Sprayer/Art/Sprayer90.png" id="4_ufniq"]
+[ext_resource type="Texture2D" uid="uid://1ckr3ygrs4a" path="res://Enemies/Sprayer/Art/Sprayer135.png" id="5_ux7ag"]
+[ext_resource type="Texture2D" uid="uid://8vjn7rimerb0" path="res://Enemies/Sprayer/Art/Sprayer180.png" id="6_6k60h"]
+[ext_resource type="Texture2D" uid="uid://cy8iqqlmxp5fo" path="res://Enemies/Sprayer/Art/Sprayer225.png" id="7_3svlw"]
+[ext_resource type="Texture2D" uid="uid://cbygkswy81fs0" path="res://Enemies/Sprayer/Art/Sprayer270.png" id="8_6yinj"]
+[ext_resource type="Texture2D" uid="uid://d16t26vjmfvk2" path="res://Enemies/Sprayer/Art/Sprayer315.png" id="9_5jbuy"]
+[ext_resource type="PackedScene" uid="uid://biohwhpugn32w" path="res://Communal/Projectiles/ProjectileEmitter.tscn" id="11_lr5qy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hekt5"]
+size = Vector2(32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrylg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jhm06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4qkvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ufniq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ux7ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6k60h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3svlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6yinj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5jbuy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62s0b"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwtgx"]
+radius = 250.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_whwb6"]
+radius = 500.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jyvh"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_0r5i7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hekt5")
+
+[node name="EnemyTexture" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_vrylg")
+frame = 3
+frame_progress = 0.895092
+offset = Vector2(0, -24)
+
+[node name="HoverDistance" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverDistance"]
+z_as_relative = false
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_62s0b")
+debug_color = Color(0, 0.6, 0.701961, 0.0392157)
+
+[node name="AttackDistance" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDistance"]
+z_as_relative = false
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_pwtgx")
+debug_color = Color(0, 0.6, 0.701961, 0.0392157)
+
+[node name="AggroDistance" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroDistance"]
+z_as_relative = false
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_whwb6")
+debug_color = Color(0, 0.6, 0.701961, 0.0392157)
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+autostart = true
+
+[node name="HealthBar" parent="." instance=ExtResource("3_bgy8m")]
+custom_minimum_size = Vector2(64, 16)
+offset_left = -24.0
+offset_top = -80.0
+offset_right = 40.0
+offset_bottom = -64.0
+
+[node name="DamageHitbox" type="Area2D" parent="."]
+z_as_relative = false
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_0jyvh")
+
+[node name="ProjectileEmitter" parent="." instance=ExtResource("11_lr5qy")]
+
+[connection signal="body_entered" from="HoverDistance" to="." method="_on_hover_distance_body_entered"]
+[connection signal="body_exited" from="HoverDistance" to="." method="_on_hover_distance_body_exited"]
+[connection signal="body_entered" from="AttackDistance" to="." method="_on_attack_distance_body_entered"]
+[connection signal="body_exited" from="AttackDistance" to="." method="_on_attack_distance_body_exited"]
+[connection signal="body_entered" from="AggroDistance" to="." method="_on_aggro_distance_body_entered"]
+[connection signal="body_exited" from="AggroDistance" to="." method="_on_aggro_distance_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="DamageHitbox" to="." method="_on_damage_hitbox_body_entered"]

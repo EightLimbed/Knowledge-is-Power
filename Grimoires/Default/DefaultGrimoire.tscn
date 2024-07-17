@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_rl2hy"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -60, 0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 60, 0, 0, 0, 0, 0, 0, -30, 0, 0, 0, 0, -60, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -40, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, -20, 0, 0, 0, 0, -40, 0)
 }
 point_count = 5
 
@@ -20,7 +20,7 @@ curve = SubResource("Curve2D_rl2hy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 y_sort_enabled = true
-position = Vector2(-60, 0)
+position = Vector2(-40, 0)
 rotation = 0.463648
 rotates = false
 
@@ -32,4 +32,3 @@ texture = ExtResource("2_bobdw")
 offset = Vector2(0, -32)
 
 [node name="ProjectileEmitter" parent="." instance=ExtResource("3_b6qjn")]
-position = Vector2(-60, 0)

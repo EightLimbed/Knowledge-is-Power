@@ -7,6 +7,7 @@ var hover_ease : bool
 var attacking : bool
 var input : Vector2
 var hit : float
+var personality : Vector2
 
 #for naming bullets properly
 @onready var projectile_emitter = $ProjectileEmitter
@@ -36,11 +37,12 @@ func _ready():
 	health = profile.max_health
 	#goes to spawn
 	global_position = spawn_pos
+	personality = Vector2(random.randi_range(-2,2), random.randi_range(-2,2))
 
 func _physics_process(delta):
 	#updates health and does immunity frames
 	health_bar.update(0, health, profile.max_health)
-	hit -= delta
+	#hit -= delta
 
 	#behavior
 	if agro:
@@ -50,7 +52,7 @@ func _physics_process(delta):
 		if not hover and not attacking:
 			velocity = input.normalized()*profile.speed*delta*Vector2(1,0.5)
 		elif hover:
-			velocity = -input.normalized()*profile.speed*delta*Vector2(0.5,0.25)
+			velocity = -input.normalized()*profile.speed*delta*Vector2(0.5,0.25)*personality
 		move_and_slide()
 	else:
 		visible = false
@@ -124,9 +126,10 @@ func _on_damage_hitbox_body_entered(body):
 
 func take_damage(damage):
 	health -= damage
-	hit = 0.05
-	splatter()
-	death()
+	hit = 0
+	if damage:
+		splatter()
+		death()
 
 #kills enemy when health is below zero
 func death():

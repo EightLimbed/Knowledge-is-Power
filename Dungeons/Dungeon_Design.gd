@@ -26,8 +26,8 @@ func design_room():
 	var center = position
 	room_centers.append(center)
 	#dimensions of rooms
-	size.x = random.randi_range(32,38)
-	size.y = random.randi_range(32,28)
+	size.x = random.randi_range(32,42)
+	size.y = random.randi_range(32,42)
 
 	#adds coordinates of room walls
 	for x in size.x:

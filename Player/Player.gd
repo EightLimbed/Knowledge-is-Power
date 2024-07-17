@@ -26,12 +26,14 @@ var afterimages_main
 var hit : float = 0
 
 func _ready():
+	stagger_grimoires()
 	#projectiles
 	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
 	#bloodstains
 	afterimages_main = get_tree().get_root().get_node("Game").get_node("AfterimagesContainer")
 	#texture
 	texture = $PlayerTexture
+	#staggers grimoires, so they dont overlap
 
 func _physics_process(delta):
 	#gets direction of input
@@ -92,7 +94,7 @@ func _on_damage_hitbox_body_entered(body):
 		health -= body.damage
 		texture.self_modulate.a = 100
 		splatter()
-		hit = 0.1
+		hit = 0.5
 
 #handles dash
 func dash(delta):
@@ -111,10 +113,15 @@ func dash(delta):
 	else:
 		dash_charge += delta*500
 
+#makes player bleed
 func splatter():
 	var instance = blood_splatter.instantiate()
 	instance.global_position = global_position
 	afterimages_main.add_child.call_deferred(instance)
 
-func projectiles_from_grimoires():
-	pass
+#prevents grimoire overlap
+func stagger_grimoires():
+	var children = $GrimoiresContainer.get_children()
+	for i in children.size():
+		children[i].path_offset = (i+1)*round(180/children.size())
+		print(children[i].name)
