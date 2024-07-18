@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm2upafcwlpuc"]
+[gd_scene load_steps=5 format=3 uid="uid://dm2upafcwlpuc"]
 
 [ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_5vius"]
+[ext_resource type="Script" path="res://RoomDrawer.gd" id="2_kixq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m54b4"]
 texture = ExtResource("1_5vius")
@@ -8,6 +9,9 @@ texture_region_size = Vector2i(32, 48)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_okc20"]
 tile_shape = 1
@@ -23,3 +27,5 @@ texture_filter = 1
 tile_set = SubResource("TileSet_okc20")
 format = 2
 layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(262152, 65536, 0, 327688, 65536, 0, 393224, 65536, 0, 458760, 65536, 0, 524296, 65536, 0, 589832, 65536, 0, 589831, 65536, 0, 589830, 65536, 0, 589829, 65536, 0, 589828, 65536, 0, 589827, 65536, 0, 655355, 65536, 0, 655354, 65536, 0, 655353, 65536, 0, 655352, 65536, 0, 655351, 65536, 0, 655350, 65536, 0, 589814, 65536, 0, 524278, 65536, 0, 458742, 65536, 0, 393206, 65536, 0, 327670, 65536, 0, -196618, 65536, 0, -262154, 65536, 0, -327690, 65536, 0, -393226, 65536, 0, -458762, 65536, 0, -524298, 65536, 0, -524297, 65536, 0, -524296, 65536, 0, -524295, 65536, 0, -524294, 65536, 0, -524293, 65536, 0, -589821, 65536, 0, -589819, 65536, 0, -589820, 65536, 0, -589818, 65536, 0, -589817, 65536, 0, -589816, 65536, 0, -524280, 65536, 0, -458744, 65536, 0, -393208, 65536, 0, -262136, 65536, 0, -327672, 65536, 0)
+script = ExtResource("2_kixq6")

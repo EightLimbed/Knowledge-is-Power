@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://trwovn33yxdy"]
+
+[ext_resource type="Texture2D" uid="uid://d2c10halcnuh2" path="res://Grimoires/Wall/Art/WallClosed.png" id="1_167cq"]
+[ext_resource type="Script" path="res://Grimoires/Wall/Wall.gd" id="1_id7o3"]
+
+[sub_resource type="Curve2D" id="Curve2D_8gfme"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -40, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, -20, 0, 0, 0, 0, -40, 0)
+}
+point_count = 5
+
+[node name="Wall" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_id7o3")
+
+[node name="Path2D" type="Path2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_8gfme")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+y_sort_enabled = true
+position = Vector2(-40, 0)
+rotation = 0.463648
+rotates = false
+
+[node name="Wall" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+rotation = -0.463648
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/Wall"]
+polygon = PackedVector2Array(-8, 0, 0, 4, 8, 0, 8, -8, 0, -12, -8, -8)
+
+[node name="Texture" type="Sprite2D" parent="Path2D/PathFollow2D"]
+self_modulate = Color(0.392157, 0.784314, 0.784314, 0.392157)
+y_sort_enabled = true
+texture_filter = 1
+rotation = -0.463648
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_167cq")
+offset = Vector2(0, -16)

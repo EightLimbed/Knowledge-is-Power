@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drbork64waa1n"
-path="res://.godot/imported/HeavyGrimoireClosed.png-66adcf943833aa21dd274479213fca5f.ctex"
+uid="uid://b35nnj2cjqj7v"
+path="res://.godot/imported/DefaultGrimoirClosed.png-81eba8b442a24ac6f152f7a98852b38b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Grimoires/Heavy/Art/HeavyGrimoireClosed.png"
-dest_files=["res://.godot/imported/HeavyGrimoireClosed.png-66adcf943833aa21dd274479213fca5f.ctex"]
+source_file="res://Grimoires/DefaultGrimoire/Art/DefaultGrimoirClosed.png"
+dest_files=["res://.godot/imported/DefaultGrimoirClosed.png-81eba8b442a24ac6f152f7a98852b38b.ctex"]
 
 [params]
 

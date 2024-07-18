@@ -24,6 +24,7 @@ var afterimages_main
 @export var health : int = 100
 @export var max_health : int = 100
 var hit : float = 0
+@onready var grimoires_container = $GrimoiresContainer
 
 func _ready():
 	stagger_grimoires()
@@ -119,9 +120,28 @@ func splatter():
 	instance.global_position = global_position
 	afterimages_main.add_child.call_deferred(instance)
 
-#prevents grimoire overlap
+#makes grimoires look good
 func stagger_grimoires():
-	var children = $GrimoiresContainer.get_children()
-	for i in children.size():
-		children[i].path_offset = (i+1)*round(180/children.size())
-		print(children[i].name)
+	pattern_children(grimoires_container)
+	var grimoires = grimoires_container.get_children()
+	#staggers grimoires
+	for i in grimoires.size():
+		grimoires[i].path_offset = (i+1)*178.8854382/grimoires.size()
+
+func pattern_children(parent: Node):
+	#gets children values
+	var alphabet : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	var sorted_children := parent.get_children()
+
+	#groups children by type
+	sorted_children.sort_custom(
+	func(a: Node, b: Node): return a.name.naturalnocasecmp_to(b.name) < 0)
+
+	#groups children by number, and staggers type
+	sorted_children.sort_custom(
+	func(a: Node, b: Node): return a.name.lstrip(alphabet).naturalnocasecmp_to(b.name.lstrip(alphabet)) < 0)
+
+	#sorts children by 
+	for node in sorted_children:
+		parent.move_child(node, 0)
+	

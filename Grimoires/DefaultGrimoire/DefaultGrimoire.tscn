@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bje3fr5ph810v"]
 
-[ext_resource type="Script" path="res://Grimoires/Default/DefaultGrimoire.gd" id="1_qfwes"]
-[ext_resource type="Texture2D" uid="uid://3xjyklu6tnxg" path="res://Grimoires/Default/Art/DefaultGrimoireClosed.png" id="2_bobdw"]
-[ext_resource type="PackedScene" uid="uid://biohwhpugn32w" path="res://Communal/Projectiles/ProjectileEmitter.tscn" id="3_b6qjn"]
+[ext_resource type="Script" path="res://Grimoires/DefaultGrimoire/DefaultGrimoire.gd" id="1_ksg85"]
+[ext_resource type="Texture2D" uid="uid://b35nnj2cjqj7v" path="res://Grimoires/DefaultGrimoire/Art/DefaultGrimoirClosed.png" id="2_b11pj"]
+[ext_resource type="PackedScene" uid="uid://biohwhpugn32w" path="res://Communal/Projectiles/ProjectileEmitter.tscn" id="3_0vmqy"]
 
 [sub_resource type="Curve2D" id="Curve2D_rl2hy"]
 _data = {
@@ -12,7 +12,7 @@ point_count = 5
 
 [node name="DefaultGrimoire" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_qfwes")
+script = ExtResource("1_ksg85")
 
 [node name="Path2D" type="Path2D" parent="."]
 y_sort_enabled = true
@@ -28,7 +28,7 @@ rotates = false
 y_sort_enabled = true
 texture_filter = 1
 rotation = -0.463648
-texture = ExtResource("2_bobdw")
+texture = ExtResource("2_b11pj")
 offset = Vector2(0, -32)
 
-[node name="ProjectileEmitter" parent="." instance=ExtResource("3_b6qjn")]
+[node name="ProjectileEmitter" parent="." instance=ExtResource("3_0vmqy")]

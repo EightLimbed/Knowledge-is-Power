@@ -4,13 +4,13 @@ extends Node2D
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 
 var speed : int = 100
-var path_offset : int
+var path_offset : float
 var attack_speed : float = 0.4
 @onready var path : PathFollow2D = $Path2D/PathFollow2D
 @onready var projectile_emitter = $ProjectileEmitter
 var attack : float
 
-var projectile_texture = preload("res://Grimoires/Default/Art/DefaultGrimoireProjectile.png")
+var projectile_texture = preload("res://Grimoires/DefaultGrimoire/Art/DefaultGrimoireProjectile.png")
 
 func _process(delta):
 	offset()
