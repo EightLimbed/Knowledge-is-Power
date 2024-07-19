@@ -22,5 +22,10 @@ func _process(delta):
 func _on_lifetime_timeout():
 	queue_free()
 
-func _on_wall_detection_body_entered(_body):
-	queue_free()
+func _on_wall_detection_body_entered(body):
+	if body.name == "Dungeon":
+		queue_free()
+	if body.name == "EShield" and self.name.contains("PProj"):
+		queue_free()
+	if body.name == "PShield" and self.name.contains("EProj"):
+		queue_free()

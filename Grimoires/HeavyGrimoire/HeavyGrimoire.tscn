@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://q3rk4cnun5jb"]
 
 [ext_resource type="Script" path="res://Grimoires/HeavyGrimoire/HeavyGrimoire.gd" id="1_eqotr"]
-[ext_resource type="Texture2D" uid="uid://drbork64waa1n" path="res://Grimoires/HeavyGrimoire/Art/HeavyGrimoireClosed.png" id="2_h2v0j"]
+[ext_resource type="Texture2D" uid="uid://jv8s17w26sv7" path="res://Grimoires/HeavyGrimoire/Art/HeavyGrimoireClosed.png" id="2_h2v0j"]
 [ext_resource type="Script" path="res://Communal/Projectiles/GiveDamage.gd" id="3_sahrc"]
 
 [sub_resource type="Curve2D" id="Curve2D_47eri"]
@@ -11,7 +11,7 @@ _data = {
 point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh0su"]
-size = Vector2(20, 32)
+size = Vector2(20, 28)
 
 [node name="HeavyGrimoire" type="Node2D"]
 y_sort_enabled = true
@@ -38,6 +38,7 @@ offset = Vector2(0, -16)
 rotation = -0.463648
 collision_layer = 8
 collision_mask = 0
+slide_on_ceiling = false
 script = ExtResource("3_sahrc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/PProj"]

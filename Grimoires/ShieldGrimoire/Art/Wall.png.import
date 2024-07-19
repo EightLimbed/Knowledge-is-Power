@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jv8s17w26sv7"
-path="res://.godot/imported/HeavyGrimoireClosed.png-11af810572c111549d59cc7266c80aac.ctex"
+uid="uid://bo8jtd4bl8ss1"
+path="res://.godot/imported/Wall.png-2f2157e0ffe894ca3f1cf8bf033d7530.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Grimoires/HeavyGrimoire/Art/HeavyGrimoireClosed.png"
-dest_files=["res://.godot/imported/HeavyGrimoireClosed.png-11af810572c111549d59cc7266c80aac.ctex"]
+source_file="res://Grimoires/ShieldGrimoire/Art/Wall.png"
+dest_files=["res://.godot/imported/Wall.png-2f2157e0ffe894ca3f1cf8bf033d7530.ctex"]
 
 [params]
 

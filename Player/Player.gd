@@ -27,7 +27,7 @@ var hit : float = 0
 @onready var grimoires_container = $GrimoiresContainer
 
 func _ready():
-	stagger_grimoires()
+	pattern_children(grimoires_container)
 	#projectiles
 	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
 	#bloodstains
@@ -35,6 +35,7 @@ func _ready():
 	#texture
 	texture = $PlayerTexture
 	#staggers grimoires, so they dont overlap
+	stagger_grimoires()
 
 func _physics_process(delta):
 	#gets direction of input
@@ -122,12 +123,15 @@ func splatter():
 
 #makes grimoires look good
 func stagger_grimoires():
-	pattern_children(grimoires_container)
 	var grimoires = grimoires_container.get_children()
 	#staggers grimoires
 	for i in grimoires.size():
-		grimoires[i].path_offset = (i+1)*178.8854382/grimoires.size()
+		grimoires[i].path_offset = i*178.8854382/grimoires.size()
+		print(grimoires[i].name)
+		print(grimoires[i].path_offset)
 
+
+#temporary until inventory
 func pattern_children(parent: Node):
 	#gets children values
 	var alphabet : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"

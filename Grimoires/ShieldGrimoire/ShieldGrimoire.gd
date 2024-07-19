@@ -1,20 +1,26 @@
-#melee grimoire
+#blocks bullets
 extends Node2D
 
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 var path_offset : float
-@onready var damage : CharacterBody2D = $Path2D/PathFollow2D/PProj
 var speed : int = 100
+@onready var shield = $Path2D/PathFollow2D/PShield
 @onready var path : PathFollow2D = $Path2D/PathFollow2D
 
 func _process(delta):
 	offset()
 	if Input.is_action_pressed("Mouse"):
-		grow_to(Vector2(5,5), 8, delta)
-		damage.damage = 20
+		grow_to(Vector2(3,3), 8, delta)
 	else:
 		grow_to(Vector2(1,1), -8, delta)
-		damage.damage = 0
+
+	if round(scale) == Vector2(3,3):
+		shield.visible = true
+		shield.disable_mode = true
+	else:
+		shield.visible = false
+		shield.disable_mode = false
+
 	path.progress += speed*delta
 
 func offset():

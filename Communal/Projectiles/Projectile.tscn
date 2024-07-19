@@ -30,7 +30,7 @@ one_shot = true
 
 [node name="WallDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 65
+collision_mask = 193
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection"]
 shape = SubResource("CircleShape2D_3j2h4")
