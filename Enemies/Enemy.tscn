@@ -111,7 +111,6 @@ one_shot = true
 autostart = true
 
 [node name="HealthBar" parent="." instance=ExtResource("3_bgy8m")]
-custom_minimum_size = Vector2(64, 16)
 offset_left = -24.0
 offset_top = -80.0
 offset_right = 40.0

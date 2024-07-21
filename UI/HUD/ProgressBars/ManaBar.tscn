@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvrfe7rsa7vhr"]
+
+[ext_resource type="Texture2D" uid="uid://ce4qyockv1w3j" path="res://UI/HUD/ProgressBars/Art/ProgressBarEmpty.png" id="1_dcxe7"]
+[ext_resource type="Texture2D" uid="uid://dav6v82qf10nu" path="res://UI/HUD/ProgressBars/Art/ManaBarFull.png" id="2_lrdyo"]
+[ext_resource type="Script" path="res://UI/HUD/ProgressBars/ProgressBar.gd" id="3_lo8i2"]
+[ext_resource type="Texture2D" uid="uid://2wwyenc7m5g6" path="res://UI/HUD/ProgressBars/Art/ManaSymbol.png" id="4_18h4v"]
+
+[node name="ManaBar" type="TextureProgressBar"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = -552.0
+offset_bottom = -340.0
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+texture_under = ExtResource("1_dcxe7")
+texture_progress = ExtResource("2_lrdyo")
+script = ExtResource("3_lo8i2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_right = -4.0
+offset_bottom = 16.0
+texture = ExtResource("4_18h4v")

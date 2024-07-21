@@ -23,6 +23,9 @@ var afterimages_main
 #stats
 @export var health : int = 100
 @export var max_health : int = 100
+@export var mana : float = 200
+@export var max_mana : int = 200
+@export var mana_regen : int = 50
 var hit : float = 0
 @onready var grimoires_container = $GrimoiresContainer
 
@@ -47,6 +50,12 @@ func _physics_process(delta):
 
 	#gets dash
 	dash(delta)
+
+	#regenerates mana
+	if mana <= max_mana:
+		mana += delta*mana_regen
+	else:
+		mana = max_mana
 
 	#shooting (temporary)
 	if Input.is_action_just_pressed("Mouse"):
@@ -125,10 +134,9 @@ func splatter():
 func stagger_grimoires():
 	var grimoires = grimoires_container.get_children()
 	#staggers grimoires
-	for i in grimoires.size():
-		grimoires[i].path_offset = i*178.8854382/grimoires.size()
-		print(grimoires[i].name)
-		print(grimoires[i].path_offset)
+	var increase := 178.88/grimoires.size()-(1/178.88/grimoires.size())
+	for f in grimoires.size():
+		grimoires[f].path_offset = increase*(f)-(1/178.88/grimoires.size())
 
 
 #temporary until inventory
@@ -139,13 +147,13 @@ func pattern_children(parent: Node):
 
 	#groups children by type
 	sorted_children.sort_custom(
-	func(a: Node, b: Node): return a.name.naturalnocasecmp_to(b.name) < 0)
+	func(a: Node, b: Node): return a.name.naturalnocasecmp_to(b.name) > 0)
 
 	#groups children by number, and staggers type
 	sorted_children.sort_custom(
-	func(a: Node, b: Node): return a.name.lstrip(alphabet).naturalnocasecmp_to(b.name.lstrip(alphabet)) < 0)
+	func(a: Node, b: Node): return a.name.lstrip(alphabet).naturalnocasecmp_to(b.name.lstrip(alphabet)) > 0)
 
-	#sorts children by 
+	#sorts children
 	for node in sorted_children:
 		parent.move_child(node, 0)
 	

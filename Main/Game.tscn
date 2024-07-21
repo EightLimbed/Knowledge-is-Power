@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=9 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="5_gk5jb"]
 [ext_resource type="PackedScene" uid="uid://f1f1hktrckvd" path="res://UI/HUD/ProgressBars/DashBar.tscn" id="5_idogn"]
 [ext_resource type="PackedScene" uid="uid://gjqrao5c4hiw" path="res://UI/HUD/Crosshair/AimingCrosshair.tscn" id="7_k0sf7"]
+[ext_resource type="PackedScene" uid="uid://cvrfe7rsa7vhr" path="res://UI/HUD/ProgressBars/ManaBar.tscn" id="7_s78lh"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_n2juu")
 
 [node name="Dungeon" parent="." instance=ExtResource("2_ew2mm")]
+layer_0/tile_data = PackedInt32Array(-327687, 1, 0)
 layer_1/tile_data = PackedInt32Array(655350, 0, 0, 589814, 0, 0, 524278, 0, 0, 458742, 0, 0, 393206, 0, 0, 327670, 0, 0, 262134, 0, 0, 196598, 0, 0, 131062, 0, 0, 65526, 0, 0, -10, 0, 0, -65546, 0, 0, -131082, 0, 0, -196618, 0, 0, -262154, 0, 0, -327690, 0, 0, -393226, 0, 0, -458762, 0, 0, -524298, 0, 0, -524297, 0, 0, -524296, 0, 0, -524295, 0, 0, -524294, 0, 0, -524293, 0, 0, -524292, 0, 0, -524291, 0, 0, -524290, 0, 0, -524289, 0, 0, -589824, 0, 0, -589823, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0, -589819, 0, 0, -589818, 0, 0, -589817, 0, 0, -589816, 0, 0, -589815, 0, 0, -589814, 0, 0, -589813, 0, 0, -524277, 0, 0, -458741, 0, 0, -393205, 0, 0, -327669, 0, 0, -262133, 0, 0, -196597, 0, 0, 262155, 0, 0, 327691, 0, 0, 393227, 0, 0, 458763, 0, 0, 524299, 0, 0, 589835, 0, 0, 655351, 0, 0, 655352, 0, 0, 655353, 0, 0, 655354, 0, 0, 655355, 0, 0, 655356, 0, 0, 655357, 0, 0, 655358, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_u20kj")]
@@ -35,18 +37,31 @@ y_sort_enabled = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
+offset_left = -60.0
+offset_right = -20.0
 offset_bottom = 26.0
 grow_horizontal = 0
 text = "FPS:"
+horizontal_alignment = 2
 script = ExtResource("4_eel0q")
 metadata/_edit_use_anchors_ = true
 
-[node name="DashBar" parent="HUD" instance=ExtResource("5_idogn")]
-offset_top = 28.0
-offset_bottom = -316.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+custom_minimum_size = Vector2(64, 16)
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 60.0
 
-[node name="HealthBar" parent="HUD" instance=ExtResource("5_gk5jb")]
+[node name="HealthBar" parent="HUD/VBoxContainer" instance=ExtResource("5_gk5jb")]
+layout_mode = 2
+
+[node name="ManaBar" parent="HUD/VBoxContainer" instance=ExtResource("7_s78lh")]
+layout_mode = 2
+
+[node name="DashBar" parent="HUD/VBoxContainer" instance=ExtResource("5_idogn")]
+custom_minimum_size = Vector2(48, 16)
+layout_mode = 2
 
 [node name="AimingCrosshair" parent="." instance=ExtResource("7_k0sf7")]
 

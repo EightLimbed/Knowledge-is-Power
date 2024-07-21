@@ -1,8 +1,9 @@
 extends Node2D
 
 @onready var player = $Player
-@onready var healthbar = $HUD/HealthBar
-@onready var dashbar = $HUD/DashBar
+@onready var healthbar = $HUD/VBoxContainer/HealthBar
+@onready var dashbar = $HUD/VBoxContainer/DashBar
+@onready var manabar = $HUD/VBoxContainer/ManaBar
 
 #func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -10,14 +11,12 @@ extends Node2D
 func _process(_delta):
 	healthbar.update(0, player.health, player.max_health)
 	dashbar.update(0, player.dash_charge, player.dash_cooldown)
-	if healthbar.visible:
-		dashbar.position.y = 28
-	else:
-		dashbar.position.y = 4
+	manabar.update(0, player.mana, player.max_mana)
 
 func _on_dungeon_next_level():
 	$Player.position = Vector2(0,0)
 	$Player.health = $Player.max_health
+	#$Player.mana = $Player.max_mana
 	clear_children($EnemiesContainer)
 	clear_children($ProjectilesContainer)
 

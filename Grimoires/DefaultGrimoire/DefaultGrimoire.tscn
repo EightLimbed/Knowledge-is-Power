@@ -20,8 +20,9 @@ curve = SubResource("Curve2D_rl2hy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 y_sort_enabled = true
-position = Vector2(-40, 0)
+position = Vector2(-39.9998, -9.21488e-05)
 rotation = 0.463648
+progress = 178.885
 rotates = false
 
 [node name="Texture" type="Sprite2D" parent="Path2D/PathFollow2D"]
@@ -29,6 +30,6 @@ y_sort_enabled = true
 texture_filter = 1
 rotation = -0.463648
 texture = ExtResource("2_b11pj")
-offset = Vector2(0, -32)
+offset = Vector2(0, -30)
 
 [node name="ProjectileEmitter" parent="." instance=ExtResource("3_0vmqy")]
