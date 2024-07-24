@@ -25,7 +25,7 @@ var afterimages_main
 @export var max_health : int = 100
 @export var mana : float = 200
 @export var max_mana : int = 200
-@export var mana_regen : int = 50
+@export var mana_regen : int = 1400
 var hit : float = 0
 @onready var grimoires_container = $GrimoiresContainer
 
@@ -37,8 +37,6 @@ func _ready():
 	afterimages_main = get_tree().get_root().get_node("Game").get_node("AfterimagesContainer")
 	#texture
 	texture = $PlayerTexture
-	#staggers grimoires, so they dont overlap
-	stagger_grimoires()
 
 func _physics_process(delta):
 	#gets direction of input
@@ -134,13 +132,37 @@ func splatter():
 func stagger_grimoires():
 	var grimoires = grimoires_container.get_children()
 	#staggers grimoires
-	var increase := 178.88/grimoires.size()-(1/178.88/grimoires.size())
+	var increase := 178.89/grimoires.size()
 	for f in grimoires.size():
-		grimoires[f].path_offset = increase*(f)-(1/178.88/grimoires.size())
+		grimoires[f].path_offset = increase*(f)
 
+func pattern_children(parent: Node):
+	var sorted_children := parent.get_children()
+	var group_sizes : Array = []
+	#groups children by type
+	sorted_children.sort_custom(
+	func(a: Node, b: Node): return a.name.naturalnocasecmp_to(b.name) > 0)
+	#gets children to check for in array and counts amount of each type
+	var unique : Array = []
+	for node in sorted_children:
+		if not unique.has(node.name.rstrip("1234567890")):
+			unique.append(node.name.rstrip("1234567890"))
+	var no_numbers : Array = []
+	for node in sorted_children:
+		no_numbers.append(node.name.rstrip("1234567890"))
+	for node_name in unique:
+		group_sizes.append(no_numbers.count(node_name))
+	#staggers each of the nodes within their groups
+	print(group_sizes)
+	var index_help : int = 0
+	for number in group_sizes:
+		var increase : float = 178.89/number
+		for i in number:
+			sorted_children[i+index_help].path_offset = increase*(i)
+		index_help+=number
 
 #temporary until inventory
-func pattern_children(parent: Node):
+func pattern_children_old(parent: Node):
 	#gets children values
 	var alphabet : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 	var sorted_children := parent.get_children()

@@ -36,12 +36,12 @@ rotation = -0.463648
 collision_layer = 64
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/PShield"]
-polygon = PackedVector2Array(-16, 0, 0, 8, 16, 0, 16, -32, 0, -38, -16, -32)
-
 [node name="Texture" type="Sprite2D" parent="Path2D/PathFollow2D/PShield"]
 self_modulate = Color(0.392157, 1, 0.784314, 0.607843)
 y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("2_l74j7")
 offset = Vector2(0, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/PShield"]
+polygon = PackedVector2Array(0, 8, -16, 0, -16, -16, 0, -24, 16, -16, 16, 0)

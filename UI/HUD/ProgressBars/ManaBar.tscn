@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ce4qyockv1w3j" path="res://UI/HUD/ProgressBars/Art/ProgressBarEmpty.png" id="1_dcxe7"]
 [ext_resource type="Texture2D" uid="uid://dav6v82qf10nu" path="res://UI/HUD/ProgressBars/Art/ManaBarFull.png" id="2_lrdyo"]
 [ext_resource type="Script" path="res://UI/HUD/ProgressBars/ProgressBar.gd" id="3_lo8i2"]
-[ext_resource type="Texture2D" uid="uid://2wwyenc7m5g6" path="res://UI/HUD/ProgressBars/Art/ManaSymbol.png" id="4_18h4v"]
+[ext_resource type="Texture2D" uid="uid://ce12qyh4kfhkj" path="res://UI/HUD/ProgressBars/Art/ManaSymbol.png" id="4_18h4v"]
 
 [node name="ManaBar" type="TextureProgressBar"]
 z_index = 1

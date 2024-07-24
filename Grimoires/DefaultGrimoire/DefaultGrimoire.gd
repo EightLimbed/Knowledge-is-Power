@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 
-var speed : int = 100
+var speed : int = 75
 var path_offset : float
 var attack_speed : float = 0.25
 @onready var path : PathFollow2D = $Path2D/PathFollow2D
