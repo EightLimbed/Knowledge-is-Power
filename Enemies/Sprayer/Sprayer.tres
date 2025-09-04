@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=12 format=3 uid="uid://chchf10ok2ih7"]
 
 [ext_resource type="Texture2D" uid="uid://cp3hywjsb4qmw" path="res://Enemies/Sprayer/Art/SprayerBullet.png" id="1_51dxo"]
-[ext_resource type="Script" path="res://Enemies/EnemyResource.gd" id="2_heh8a"]
+[ext_resource type="Script" uid="uid://b1nh0fnwny1ua" path="res://Enemies/EnemyResource.gd" id="2_heh8a"]
 [ext_resource type="Texture2D" uid="uid://bqiy04j4qek6d" path="res://Enemies/Sprayer/Art/Sprayer0.png" id="3_6t11u"]
 [ext_resource type="Texture2D" uid="uid://cp7deqqd5ws6p" path="res://Enemies/Sprayer/Art/Sprayer45.png" id="4_l3gt7"]
 [ext_resource type="Texture2D" uid="uid://df0ee61f2r681" path="res://Enemies/Sprayer/Art/Sprayer90.png" id="5_3mcqi"]

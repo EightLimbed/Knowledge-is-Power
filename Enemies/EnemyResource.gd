@@ -38,4 +38,3 @@ class_name Enemy
 
 #difficulty weight
 @export var difficulty : int
-

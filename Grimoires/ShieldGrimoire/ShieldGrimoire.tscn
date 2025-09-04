@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://trwovn33yxdy"]
 
-[ext_resource type="Script" path="res://Grimoires/ShieldGrimoire/ShieldGrimoire.gd" id="1_6hrqr"]
+[ext_resource type="Script" uid="uid://ki277daj20lv" path="res://Grimoires/ShieldGrimoire/ShieldGrimoire.gd" id="1_6hrqr"]
 [ext_resource type="Texture2D" uid="uid://bo8jtd4bl8ss1" path="res://Grimoires/ShieldGrimoire/Art/Wall.png" id="2_l74j7"]
 [ext_resource type="Texture2D" uid="uid://drbork64waa1n" path="res://Grimoires/ShieldGrimoire/Art/ShieldGrimoireClosed.png" id="3_wkvii"]
 

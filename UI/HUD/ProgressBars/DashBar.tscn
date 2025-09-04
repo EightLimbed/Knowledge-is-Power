@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://f1f1hktrckvd"]
 
-[ext_resource type="Script" path="res://UI/HUD/ProgressBars/ProgressBar.gd" id="1_22ymo"]
+[ext_resource type="Script" uid="uid://x7e8ix5ctv63" path="res://UI/HUD/ProgressBars/ProgressBar.gd" id="1_22ymo"]
 [ext_resource type="Texture2D" uid="uid://llkffdm1sr5d" path="res://UI/HUD/ProgressBars/Art/DashBarFull.png" id="1_duwig"]
 [ext_resource type="Texture2D" uid="uid://ce4qyockv1w3j" path="res://UI/HUD/ProgressBars/Art/ProgressBarEmpty.png" id="1_uryuy"]
 [ext_resource type="Texture2D" uid="uid://oiswpv5s4xc5" path="res://UI/HUD/ProgressBars/Art/DashSymbol.png" id="3_rdpwa"]

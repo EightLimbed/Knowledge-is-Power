@@ -1,9 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://becsqxl4xrgj6"]
 
-[ext_resource type="Script" path="res://Communal/Projectiles/Projectile.gd" id="1_gdumw"]
+[ext_resource type="Script" uid="uid://by5lyla73aai" path="res://Communal/Projectiles/Projectile.gd" id="1_gdumw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fte7u"]
-load_path = "res://.godot/imported/ShooterBullet.png-03e0756775c01d8bce3bcec4a6ee99d9.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0l5h"]
 radius = 8.0

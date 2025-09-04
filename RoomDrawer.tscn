@@ -1,17 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm2upafcwlpuc"]
 
 [ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_5vius"]
-[ext_resource type="Script" path="res://RoomDrawer.gd" id="2_kixq6"]
+[ext_resource type="Script" uid="uid://b4w5hk0ypn22t" path="res://RoomDrawer.gd" id="2_kixq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m54b4"]
 texture = ExtResource("1_5vius")
 texture_region_size = Vector2i(32, 48)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_okc20"]
 tile_shape = 1

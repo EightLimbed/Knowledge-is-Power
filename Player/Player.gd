@@ -39,6 +39,7 @@ func _ready():
 	texture = $PlayerTexture
 
 func _physics_process(delta):
+	RenderingServer.global_shader_parameter_set("player_pos", position)
 	#gets direction of input
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))

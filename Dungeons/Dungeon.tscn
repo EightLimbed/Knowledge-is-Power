@@ -1,29 +1,23 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfddkmtljoe24"]
 
-[ext_resource type="Script" path="res://Dungeons/Dungeon.gd" id="1_h7yde"]
+[ext_resource type="Script" uid="uid://exi4aeygbxwb" path="res://Dungeons/Dungeon.gd" id="1_h7yde"]
 [ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_o6gso"]
 [ext_resource type="Texture2D" uid="uid://c3g66624gc22w" path="res://Dungeons/Art/Portal_Frame.png" id="4_5yopd"]
-[ext_resource type="Script" path="res://Dungeons/Dungeon_Design.gd" id="4_p08bb"]
+[ext_resource type="Script" uid="uid://byk7eqagv0ecl" path="res://Dungeons/Dungeon_Design.gd" id="4_p08bb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6o6mh"]
 texture = ExtResource("1_o6gso")
 texture_region_size = Vector2i(32, 48)
 0:0/0 = 0
 0:0/0/y_sort_origin = 18
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 24, 16, 16, 0, 8, -16, 16)
 1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rg7o3"]
 texture = ExtResource("4_5yopd")
 texture_region_size = Vector2i(128, 112)
 0:0/0 = 0
 0:0/0/y_sort_origin = 48
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 48, -48, 56, -64, 48, -48, 40)
 0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(48, 56, 64, 48, 48, 40, 32, 48)
 
@@ -44,11 +38,9 @@ b = Vector2(33, 48)
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 spread = 180.0
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 64.0
 initial_velocity_max = 64.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 0, 0)
 scale_max = 10.0
 color = Color(1, 0.25098, 1, 0.501961)
 hue_variation_min = 0.8

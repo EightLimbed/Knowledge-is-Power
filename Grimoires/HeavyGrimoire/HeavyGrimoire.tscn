@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://q3rk4cnun5jb"]
 
-[ext_resource type="Script" path="res://Grimoires/HeavyGrimoire/HeavyGrimoire.gd" id="1_eqotr"]
+[ext_resource type="Script" uid="uid://dwf83sb6dvd3r" path="res://Grimoires/HeavyGrimoire/HeavyGrimoire.gd" id="1_eqotr"]
 [ext_resource type="Texture2D" uid="uid://jv8s17w26sv7" path="res://Grimoires/HeavyGrimoire/Art/HeavyGrimoireClosed.png" id="2_h2v0j"]
-[ext_resource type="Script" path="res://Communal/Projectiles/GiveDamage.gd" id="3_sahrc"]
+[ext_resource type="Script" uid="uid://c7lhy756042tk" path="res://Communal/Projectiles/GiveDamage.gd" id="3_sahrc"]
 
 [sub_resource type="Curve2D" id="Curve2D_47eri"]
 _data = {

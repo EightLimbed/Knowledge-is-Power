@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://biohwhpugn32w"]
 
-[ext_resource type="Script" path="res://Communal/Projectiles/ProjectileEmitter.gd" id="1_gd80l"]
+[ext_resource type="Script" uid="uid://1ua022c67ogc" path="res://Communal/Projectiles/ProjectileEmitter.gd" id="1_gd80l"]
 
 [node name="ProjectileEmitter" type="Node2D"]
 script = ExtResource("1_gd80l")

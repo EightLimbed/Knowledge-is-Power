@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=11 format=3 uid="uid://d35or6ygc41gw"]
 
-[ext_resource type="Script" path="res://Enemies/EnemyResource.gd" id="2_j8wv6"]
+[ext_resource type="Script" uid="uid://b1nh0fnwny1ua" path="res://Enemies/EnemyResource.gd" id="2_j8wv6"]
 [ext_resource type="Texture2D" uid="uid://cj08ysvtehn1t" path="res://Player/Art/Player0.png" id="3_7v54h"]
 [ext_resource type="Texture2D" uid="uid://c82fq0tdpwpl0" path="res://Player/Art/Player45.png" id="4_nborg"]
 [ext_resource type="Texture2D" uid="uid://dc7j1485ff2qf" path="res://Player/Art/Player90.png" id="5_ppe5y"]
