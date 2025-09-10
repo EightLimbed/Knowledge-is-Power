@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm2upafcwlpuc"]
 
 [ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_5vius"]
-[ext_resource type="Script" uid="uid://b4w5hk0ypn22t" path="res://RoomDrawer.gd" id="2_kixq6"]
+[ext_resource type="Script" uid="uid://b4w5hk0ypn22t" path="res://Dungeons/RoomDrawer.gd" id="2_kixq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m54b4"]
 texture = ExtResource("1_5vius")

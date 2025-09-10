@@ -12,6 +12,7 @@ var main
 var levels = preload("res://Dungeons/Levels/Levels.tres")
 var current_level : int = -1
 var base_enemy = preload("res://Enemies/Enemy.tscn")
+#var pickup = preload()
 
 func _ready():
 	main = get_tree().get_root().get_node("Game").get_node("EnemiesContainer")
@@ -41,6 +42,8 @@ func new_level():
 
 #remember to use multiple tilesets
 func render_dungeon():
+	#spawns random powerup(s) (always base grimoire on level 1)
+	
 	#fills in wall tiles
 	for tile in walls:
 		set_cell(1, tile+Vector2(-1,-1), 0, Vector2i(0,0), 0)
@@ -75,3 +78,7 @@ func spawn_enemies(current_room, level):
 		instance.spawn_pos = map_to_local(current_room+spawn_offset)
 		main.add_child.call_deferred(instance)
 		difficulty -= enemy.difficulty
+
+func spawn_powerups():
+	var instance 
+	map_to_local(room_centers[0])
