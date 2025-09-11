@@ -179,4 +179,6 @@ func pattern_children_old(parent: Node):
 	#sorts children
 	for node in sorted_children:
 		parent.move_child(node, 0)
-	
+
+func add_grimoire(grimoire : Node2D):
+	pass

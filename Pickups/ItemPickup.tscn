@@ -1,0 +1,26 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5y104ym601rl"]
+
+[ext_resource type="Texture2D" uid="uid://cb38reor0oe5k" path="res://Pickups/Art/Bubble.png" id="1_144sm"]
+[ext_resource type="Script" uid="uid://dimga7etpgnba" path="res://Pickups/ItemPickup.gd" id="1_vqjx7"]
+[ext_resource type="Texture2D" uid="uid://jv8s17w26sv7" path="res://Grimoires/HeavyGrimoire/Art/HeavyGrimoireClosed.png" id="2_da8l3"]
+[ext_resource type="Texture2D" uid="uid://drbork64waa1n" path="res://Grimoires/ShieldGrimoire/Art/ShieldGrimoireClosed.png" id="2_vqjx7"]
+[ext_resource type="Texture2D" uid="uid://b35nnj2cjqj7v" path="res://Grimoires/DefaultGrimoire/Art/DefaultGrimoirClosed.png" id="3_tvwk4"]
+[ext_resource type="Texture2D" uid="uid://c7an05lnwvdpo" path="res://UI/HUD/ProgressBars/Art/HealthSymbol.png" id="5_5crpb"]
+[ext_resource type="Texture2D" uid="uid://ce12qyh4kfhkj" path="res://UI/HUD/ProgressBars/Art/ManaSymbol.png" id="6_u3200"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4u151"]
+radius = 24.0
+
+[node name="ItemPickup" type="Area2D"]
+y_sort_enabled = true
+script = ExtResource("1_vqjx7")
+textures = Array[Texture]([ExtResource("3_tvwk4"), ExtResource("2_da8l3"), ExtResource("2_vqjx7"), ExtResource("5_5crpb"), ExtResource("6_u3200")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4u151")
+
+[node name="Bubble" type="Sprite2D" parent="."]
+texture = ExtResource("1_144sm")
+
+[node name="Item" type="Sprite2D" parent="."]
+texture = ExtResource("2_vqjx7")

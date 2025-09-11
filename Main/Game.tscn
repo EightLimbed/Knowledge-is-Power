@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=12 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" uid="uid://bxc1xq2mr1yjf" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
 [ext_resource type="PackedScene" uid="uid://imjbg5m6uhty" path="res://Player/Player.tscn" id="3_u20kj"]
 [ext_resource type="Script" uid="uid://qki16b8tjek5" path="res://UI/HUD/FPS.gd" id="4_eel0q"]
+[ext_resource type="PackedScene" uid="uid://c5y104ym601rl" path="res://Pickups/ItemPickup.tscn" id="4_gcscy"]
 [ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="5_gk5jb"]
 [ext_resource type="PackedScene" uid="uid://f1f1hktrckvd" path="res://UI/HUD/ProgressBars/DashBar.tscn" id="5_idogn"]
 [ext_resource type="PackedScene" uid="uid://gjqrao5c4hiw" path="res://UI/HUD/Crosshair/AimingCrosshair.tscn" id="7_k0sf7"]
@@ -34,6 +35,12 @@ y_sort_enabled = true
 
 [node name="AfterimagesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="PickupsContainer" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ItemPickup" parent="PickupsContainer" instance=ExtResource("4_gcscy")]
+position = Vector2(0, 128)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
