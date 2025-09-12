@@ -60,7 +60,7 @@ func setup_dungeon():
 		spawn_enemies(room_centers[i+1], random.randi_range(current_level*2+5, current_level*2+10))
 
 	#spawns random powerup(s) (always base grimoire on level 1)
-	var powerup_count = (current_level)*3
+	var powerup_count = min((current_level)*3,25)
 	for i in powerup_count:
 		var instance = pickup.instantiate()
 		instance.position = Vector2(cos(2*i*PI/powerup_count), sin(2*i*PI/powerup_count))*128.0
