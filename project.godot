@@ -25,6 +25,10 @@ window/stretch/aspect="expand"
 window/fps=60
 window/max_fps=0
 
+[dotnet]
+
+project/assembly_name="Knowledge is Power"
+
 [input]
 
 ui_left={

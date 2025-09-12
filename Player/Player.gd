@@ -25,7 +25,7 @@ var afterimages_main
 @export var max_health : int = 100
 @export var mana : float = 200
 @export var max_mana : int = 200
-@export var mana_regen : int = 1400
+@export var mana_regen : int = 20
 var hit : float = 0
 @onready var grimoires_container = $GrimoiresContainer
 
@@ -154,7 +154,6 @@ func pattern_children(parent: Node):
 	for node_name in unique:
 		group_sizes.append(no_numbers.count(node_name))
 	#staggers each of the nodes within their groups
-	print(group_sizes)
 	var index_help : int = 0
 	for number in group_sizes:
 		var increase : float = 178.89/number
@@ -180,5 +179,7 @@ func pattern_children_old(parent: Node):
 	for node in sorted_children:
 		parent.move_child(node, 0)
 
-func add_grimoire(grimoire : Node2D):
-	pass
+func add_grimoire(grimoire : PackedScene):
+	var instance = grimoire.instantiate()
+	grimoires_container.add_child.call_deferred(instance)
+	pattern_children(grimoires_container)

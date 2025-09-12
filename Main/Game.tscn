@@ -36,12 +36,6 @@ y_sort_enabled = true
 [node name="AfterimagesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="PickupsContainer" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="ItemPickup" parent="PickupsContainer" instance=ExtResource("4_gcscy")]
-position = Vector2(0, 128)
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="FPS" type="Label" parent="HUD"]
@@ -87,5 +81,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ItemPickup" parent="." instance=ExtResource("4_gcscy")]
+position = Vector2(0, 128)
 
 [connection signal="next_level" from="Dungeon" to="." method="_on_dungeon_next_level"]

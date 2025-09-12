@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfddkmtljoe24"]
+[gd_scene load_steps=13 format=3 uid="uid://bfddkmtljoe24"]
 
 [ext_resource type="Script" uid="uid://exi4aeygbxwb" path="res://Dungeons/Dungeon.gd" id="1_h7yde"]
 [ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_o6gso"]
 [ext_resource type="Texture2D" uid="uid://c3g66624gc22w" path="res://Dungeons/Art/Portal_Frame.png" id="4_5yopd"]
+[ext_resource type="Script" uid="uid://b1nh0fnwny1ua" path="res://Enemies/EnemyResource.gd" id="4_58m1j"]
 [ext_resource type="Script" uid="uid://byk7eqagv0ecl" path="res://Dungeons/Dungeon_Design.gd" id="4_p08bb"]
+[ext_resource type="Resource" uid="uid://chchf10ok2ih7" path="res://Enemies/Sprayer/Sprayer.tres" id="5_5urn4"]
+[ext_resource type="Resource" uid="uid://d35or6ygc41gw" path="res://Enemies/Sniper/Sniper.tres" id="6_hxsjv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6o6mh"]
 texture = ExtResource("1_o6gso")
@@ -55,13 +58,9 @@ layer_0/name = "Floor"
 layer_0/y_sort_enabled = true
 layer_0/y_sort_origin = -100
 layer_1/name = "Walls"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = true
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
 script = ExtResource("1_h7yde")
+enemies = Array[ExtResource("4_58m1j")]([ExtResource("5_5urn4"), ExtResource("6_hxsjv")])
 
 [node name="Designer" type="Node2D" parent="."]
 top_level = true
@@ -80,10 +79,10 @@ shape = SubResource("SegmentShape2D_q0vng")
 [node name="PortalParticles" type="GPUParticles2D" parent="PortalTrigger"]
 position = Vector2(0, -36)
 amount = 80
-process_material = SubResource("ParticleProcessMaterial_4jqkn")
 lifetime = 0.5
 trail_lifetime = 0.5
 trail_sections = 2
 trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_4jqkn")
 
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_portal_trigger_body_entered"]
