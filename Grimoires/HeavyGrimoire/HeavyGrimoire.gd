@@ -1,6 +1,8 @@
 #melee grimoire
 extends Node2D
 
+var type = 1
+
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 var path_offset : float
 @onready var damage : CharacterBody2D = $Path2D/PathFollow2D/PProj

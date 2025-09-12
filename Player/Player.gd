@@ -24,13 +24,13 @@ var afterimages_main
 @export var health : int = 100
 @export var max_health : int = 100
 @export var mana : float = 200
-@export var max_mana : int = 200
-@export var mana_regen : int = 20
+@export var max_mana : int = 400
+@export var mana_regen : int = 40
 var hit : float = 0
 @onready var grimoires_container = $GrimoiresContainer
 
 func _ready():
-	pattern_children(grimoires_container)
+	pattern_children()
 	#projectiles
 	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
 	#bloodstains
@@ -137,49 +137,20 @@ func stagger_grimoires():
 	for f in grimoires.size():
 		grimoires[f].path_offset = increase*(f)
 
-func pattern_children(parent: Node):
-	var sorted_children := parent.get_children()
-	var group_sizes : Array = []
-	#groups children by type
-	sorted_children.sort_custom(
-	func(a: Node, b: Node): return a.name.naturalnocasecmp_to(b.name) > 0)
-	#gets children to check for in array and counts amount of each type
-	var unique : Array = []
-	for node in sorted_children:
-		if not unique.has(node.name.rstrip("1234567890")):
-			unique.append(node.name.rstrip("1234567890"))
-	var no_numbers : Array = []
-	for node in sorted_children:
-		no_numbers.append(node.name.rstrip("1234567890"))
-	for node_name in unique:
-		group_sizes.append(no_numbers.count(node_name))
-	#staggers each of the nodes within their groups
-	var index_help : int = 0
-	for number in group_sizes:
-		var increase : float = 178.89/number
-		for i in number:
-			sorted_children[i+index_help].path_offset = increase*(i)
-		index_help+=number
-
-#temporary until inventory
-func pattern_children_old(parent: Node):
-	#gets children values
-	var alphabet : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-	var sorted_children := parent.get_children()
-
-	#groups children by type
-	sorted_children.sort_custom(
-	func(a: Node, b: Node): return a.name.naturalnocasecmp_to(b.name) > 0)
-
-	#groups children by number, and staggers type
-	sorted_children.sort_custom(
-	func(a: Node, b: Node): return a.name.lstrip(alphabet).naturalnocasecmp_to(b.name.lstrip(alphabet)) > 0)
-
-	#sorts children
-	for node in sorted_children:
-		parent.move_child(node, 0)
+func pattern_children():
+	var children = grimoires_container.get_children()
+	var types = []
+	var groups = []
+	for child in children:
+		if not types.has(child.type): groups.append([])
+		groups[child.type].append(child)
+	for group in groups:
+		var gsize = group.size()
+		for i in gsize:
+			group[i].path_offset = i*178.89/float(gsize)
+			print(group[i].name)
 
 func add_grimoire(grimoire : PackedScene):
 	var instance = grimoire.instantiate()
 	grimoires_container.add_child.call_deferred(instance)
-	pattern_children(grimoires_container)
+	pattern_children.call_deferred()

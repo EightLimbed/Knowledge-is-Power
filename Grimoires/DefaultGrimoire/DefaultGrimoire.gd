@@ -1,6 +1,8 @@
 #need to offset attack speed also
 extends Node2D
 
+var type = 0
+
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 
 var speed : int = 75

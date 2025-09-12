@@ -1,6 +1,8 @@
 #blocks bullets
 extends Node2D
 
+var type = 2
+
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 var path_offset : float
 var speed : int = 150
