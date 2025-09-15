@@ -5,13 +5,14 @@ var type = 1
 
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 var path_offset : float
+var path_prog : float
 @onready var damage : CharacterBody2D = $Path2D/PathFollow2D/PProj
 var speed : int = 100
 @onready var path : PathFollow2D = $Path2D/PathFollow2D
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 
+
 func _process(delta):
-	offset()
 	if Input.is_action_pressed("Mouse") and player.mana >= 20:
 		grow_to(Vector2(3,3), 8, delta)
 		player.mana -= 20*delta
@@ -24,12 +25,8 @@ func _process(delta):
 	else:
 		damage.damage = 0
 
-	path.progress += speed*delta
-
-func offset():
-	if path_offset > 0:
-		path.progress += path_offset
-		path_offset = 0
+	path_prog += speed * delta
+	path.progress = path_prog+path_offset
 
 func grow_to(size : Vector2, rate : int, delta : float):
 	if abs(rate)/rate == 1:

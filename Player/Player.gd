@@ -139,16 +139,13 @@ func stagger_grimoires():
 
 func pattern_children():
 	var children = grimoires_container.get_children()
-	var types = []
-	var groups = []
+	var groups = [[],[],[]]
 	for child in children:
-		if not types.has(child.type): groups.append([])
 		groups[child.type].append(child)
 	for group in groups:
 		var gsize = group.size()
 		for i in gsize:
 			group[i].path_offset = i*178.89/float(gsize)
-			print(group[i].name)
 
 func add_grimoire(grimoire : PackedScene):
 	var instance = grimoire.instantiate()
