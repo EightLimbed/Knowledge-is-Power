@@ -30,6 +30,9 @@ position_smoothing_speed = 10.0
 [node name="EnemiesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="PickupsContainer" type="Node2D" parent="."]
+y_sort_enabled = true
+
 [node name="ProjectilesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 

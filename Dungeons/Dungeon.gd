@@ -9,15 +9,17 @@ var room_centers : Array
 signal next_level()
 
 #enemies/levels
-var main
+var enemy_container
 var current_level : int = -1
 var base_enemy = preload("res://Enemies/Enemy.tscn")
 
 #pickup
+var pickup_container
 var pickup = preload("res://Pickups/ItemPickup.tscn")
 
 func _ready():
-	main = get_tree().get_root().get_node("Game").get_node("EnemiesContainer")
+	enemy_container = get_tree().get_root().get_node("Game").get_node("EnemiesContainer")
+	pickup_container = get_tree().get_root().get_node("Game").get_node("PickupsContainer")
 	new_level()
 
 func _on_portal_trigger_body_entered(body):
@@ -64,7 +66,7 @@ func setup_dungeon():
 	for i in powerup_count:
 		var instance = pickup.instantiate()
 		instance.position = Vector2(cos(2*i*PI/powerup_count), sin(2*i*PI/powerup_count))*128.0
-		main.add_child.call_deferred(instance)
+		pickup_container.add_child.call_deferred(instance)
 		instance.generate.call_deferred()	
 
 	#places portal frame at start
@@ -83,7 +85,7 @@ func spawn_enemies(current_room, difficulty):
 		var spawn_offset = Vector2(random.randi_range(-14,14), random.randi_range(-14,14))
 		instance.profile = enemy
 		instance.spawn_pos = map_to_local(current_room+spawn_offset)
-		main.add_child.call_deferred(instance)
+		pickup_container.add_child.call_deferred(instance)
 		difficulty -= enemy.difficulty
 
 func spawn_powerups():

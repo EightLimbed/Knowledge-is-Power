@@ -6,8 +6,8 @@ var type = 0
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 
 var speed : int = 75
-var path_offset : float
-var path_prog : float
+var path_offset : float = 0.0
+var path_prog : float = 0.0
 var attack_speed : float = 0.25
 @onready var path : PathFollow2D = $Path2D/PathFollow2D
 @onready var projectile_emitter = $ProjectileEmitter

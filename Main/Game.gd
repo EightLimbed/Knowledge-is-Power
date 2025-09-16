@@ -4,6 +4,8 @@ extends Node2D
 @onready var healthbar = $HUD/VBoxContainer/HealthBar
 @onready var dashbar = $HUD/VBoxContainer/DashBar
 @onready var manabar = $HUD/VBoxContainer/ManaBar
+#grimoire weightings
+var weightings = [0,0,1,1,1,1,3,4]
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -18,6 +20,7 @@ func _on_dungeon_next_level():
 	$Player.health = $Player.max_health
 	clear_children($EnemiesContainer)
 	clear_children($ProjectilesContainer)
+	clear_children($PickupsContainer)
 
 #clears children of a node
 func clear_children(node):

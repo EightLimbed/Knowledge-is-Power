@@ -9,7 +9,7 @@ var dash_speed = 5
 var dash_length : float = 0.1
 var dash_time : float = 0
 @export var dash_charge : float = 0
-@export var dash_cooldown : float = 250
+@export var dash_cooldown : float = 400
 
 #projectiles
 var bullets_total : int = 0
@@ -139,13 +139,16 @@ func stagger_grimoires():
 
 func pattern_children():
 	var children = grimoires_container.get_children()
-	var groups = [[],[],[]]
+	var groups = []
 	for child in children:
+		while child.type > groups.size()-1:
+			groups.append([])
 		groups[child.type].append(child)
 	for group in groups:
 		var gsize = group.size()
 		for i in gsize:
-			group[i].path_offset = i*178.89/float(gsize)
+			group[i].path_offset = float(i)*178.89/float(gsize)
+			group[i].path_prog = 0.0
 
 func add_grimoire(grimoire : PackedScene):
 	var instance = grimoire.instantiate()
