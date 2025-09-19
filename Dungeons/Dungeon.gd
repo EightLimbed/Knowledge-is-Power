@@ -25,7 +25,7 @@ func _ready():
 
 func _process(_delta) -> void:
 	var count = enemy_container.get_child_count()
-	var active = (count == enemy_count/2)
+	var active = (enemy_count-count >= enemy_count/2)
 	$PortalTrigger/PortalParticles.visible = active
 	$PortalTrigger/Label.visible = !active
 	$PortalTrigger/Label.text = str(enemy_count-count) + "/" + str(enemy_count/2)

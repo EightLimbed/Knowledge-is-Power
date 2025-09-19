@@ -37,9 +37,9 @@ func _process(_delta) -> void:
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 4:
 		icon.visible = true
-		label.text = "Kill an enemy."
+		label.text = "Kill 3 enemies."
 		icon.texture = icon_list[2]
-		if enemy_container.get_child_count() < enemy_count:
+		if enemy_count-enemy_container.get_child_count() >= 3:
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 5:
 		icon.visible = false

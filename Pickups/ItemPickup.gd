@@ -16,7 +16,8 @@ func _on_body_entered(body: Node2D) -> void:
 	$Bubble.visible = false
 	$Item.visible = false
 	if game.weightings.has(2): $CanvasLayer.visible = true
-	game.weightings.append(type)
+	else: game.weightings.append(2)
+	if random.randi_range(0,2) == 2: game.weightings.append(type)
 	if type == 0:
 		$CanvasLayer/HBoxContainer/Label.text = "+50 Health"
 		body.max_health += 50
