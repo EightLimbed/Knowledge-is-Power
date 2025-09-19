@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=11 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" uid="uid://bxc1xq2mr1yjf" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
@@ -9,10 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://f1f1hktrckvd" path="res://UI/HUD/ProgressBars/DashBar.tscn" id="5_idogn"]
 [ext_resource type="PackedScene" uid="uid://gjqrao5c4hiw" path="res://UI/HUD/Crosshair/AimingCrosshair.tscn" id="7_k0sf7"]
 [ext_resource type="PackedScene" uid="uid://cvrfe7rsa7vhr" path="res://UI/HUD/ProgressBars/ManaBar.tscn" id="7_s78lh"]
-[ext_resource type="Shader" uid="uid://cfg0t48o6qqqu" path="res://Main/Game.gdshader" id="9_ckg3m"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcscy"]
-shader = ExtResource("9_ckg3m")
+[ext_resource type="PackedScene" uid="uid://bcny128t8mbcb" path="res://Main/Tutorial.tscn" id="11_hiksi"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -32,6 +29,9 @@ y_sort_enabled = true
 
 [node name="PickupsContainer" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="ItemPickup" parent="PickupsContainer" instance=ExtResource("4_gcscy")]
+position = Vector2(0, 96)
 
 [node name="ProjectilesContainer" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -78,14 +78,12 @@ layer = -1
 
 [node name="Background" type="ColorRect" parent="CanvasLayer"]
 z_index = -100
-material = SubResource("ShaderMaterial_gcscy")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemPickup" parent="." instance=ExtResource("4_gcscy")]
-position = Vector2(0, 128)
+[node name="Tutorial" parent="." instance=ExtResource("11_hiksi")]
 
 [connection signal="next_level" from="Dungeon" to="." method="_on_dungeon_next_level"]

@@ -20,7 +20,7 @@ curve = SubResource("Curve2D_rl2hy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 y_sort_enabled = true
-position = Vector2(-40, 0)
+position = Vector2(-39.9998, -9.21488e-05)
 rotation = 0.463648
 progress = 178.885
 rotates = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfddkmtljoe24"]
+[gd_scene load_steps=15 format=3 uid="uid://bfddkmtljoe24"]
 
 [ext_resource type="Script" uid="uid://exi4aeygbxwb" path="res://Dungeons/Dungeon.gd" id="1_h7yde"]
 [ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_o6gso"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://byk7eqagv0ecl" path="res://Dungeons/Dungeon_Design.gd" id="4_p08bb"]
 [ext_resource type="Resource" uid="uid://chchf10ok2ih7" path="res://Enemies/Sprayer/Sprayer.tres" id="5_5urn4"]
 [ext_resource type="Resource" uid="uid://d35or6ygc41gw" path="res://Enemies/Sniper/Sniper.tres" id="6_hxsjv"]
+[ext_resource type="FontFile" uid="uid://d2et8whv20jk2" path="res://UI/Pickup Notification/editundo.ttf" id="8_5urn4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6o6mh"]
 texture = ExtResource("1_o6gso")
@@ -49,6 +50,12 @@ color = Color(1, 0.25098, 1, 0.501961)
 hue_variation_min = 0.8
 hue_variation_max = 1.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_hxsjv"]
+font = ExtResource("8_5urn4")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Dungeon" type="TileMap"]
 y_sort_enabled = true
 texture_filter = 1
@@ -84,5 +91,20 @@ trail_lifetime = 0.5
 trail_sections = 2
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_4jqkn")
+
+[node name="Label" type="Label" parent="PortalTrigger"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10/4"
+label_settings = SubResource("LabelSettings_hxsjv")
 
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_portal_trigger_body_entered"]

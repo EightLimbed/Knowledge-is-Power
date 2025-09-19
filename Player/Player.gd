@@ -7,8 +7,8 @@ var input = Vector2(0,0)
 var speed = 20000
 var dash_speed = 5
 var dash_length : float = 0.1
-var dash_time : float = 0
-@export var dash_charge : float = 0
+var dash_time : float = 0.0
+@export var dash_charge : float = 0.0
 @export var dash_cooldown : float = 400
 
 #projectiles
@@ -39,7 +39,7 @@ func _ready():
 	texture = $PlayerTexture
 
 func _physics_process(delta):
-	RenderingServer.global_shader_parameter_set("player_pos", position)
+	#RenderingServer.global_shader_parameter_set("player_pos", position)
 	#gets direction of input
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))

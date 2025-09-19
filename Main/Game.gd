@@ -20,7 +20,8 @@ func _on_dungeon_next_level():
 	$Player.health = $Player.max_health
 	clear_children($EnemiesContainer)
 	clear_children($ProjectilesContainer)
-	clear_children($PickupsContainer)
+	if $Dungeon.current_level != 0:
+		clear_children($PickupsContainer)
 
 #clears children of a node
 func clear_children(node):

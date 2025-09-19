@@ -6,6 +6,7 @@ var ground : Array
 var walls : Array
 var room_centers : Array
 @export var enemies : Array[Enemy]
+var enemy_count : int = 0
 signal next_level()
 
 #enemies/levels
@@ -22,11 +23,20 @@ func _ready():
 	pickup_container = get_tree().get_root().get_node("Game").get_node("PickupsContainer")
 	new_level()
 
+func _process(_delta) -> void:
+	var count = enemy_container.get_child_count()
+	var active = (count == enemy_count/2)
+	$PortalTrigger/PortalParticles.visible = active
+	$PortalTrigger/Label.visible = !active
+	$PortalTrigger/Label.text = str(enemy_count-count) + "/" + str(enemy_count/2)
+	$PortalTrigger.monitoring = active
+
 func _on_portal_trigger_body_entered(body):
 	if body.name == "Player":
 		new_level()
 
 func new_level():
+	enemy_count = 0
 	current_level += 1
 	var color_change = random.randf_range(0.4,1.6)
 	modulate.r = color_change
@@ -67,7 +77,7 @@ func setup_dungeon():
 		var instance = pickup.instantiate()
 		instance.position = Vector2(cos(2*i*PI/powerup_count), sin(2*i*PI/powerup_count))*128.0
 		pickup_container.add_child.call_deferred(instance)
-		instance.generate.call_deferred()	
+		instance.generate.call_deferred()
 
 	#places portal frame at start
 	set_cell(1, room_centers[0]+Vector2(-3,-3), 1, Vector2i(0,0), 0)
@@ -85,9 +95,6 @@ func spawn_enemies(current_room, difficulty):
 		var spawn_offset = Vector2(random.randi_range(-14,14), random.randi_range(-14,14))
 		instance.profile = enemy
 		instance.spawn_pos = map_to_local(current_room+spawn_offset)
-		pickup_container.add_child.call_deferred(instance)
+		enemy_container.add_child.call_deferred(instance)
 		difficulty -= enemy.difficulty
-
-func spawn_powerups():
-	var instance 
-	map_to_local(room_centers[0])
+		enemy_count += 1
