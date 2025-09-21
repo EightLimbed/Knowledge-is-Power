@@ -36,7 +36,7 @@ shape = SubResource("CircleShape2D_4u151")
 texture = ExtResource("1_144sm")
 
 [node name="Item" type="Sprite2D" parent="."]
-texture = ExtResource("2_vqjx7")
+texture = ExtResource("3_tvwk4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
