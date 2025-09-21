@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://bfddkmtljoe24"]
 
 [ext_resource type="Script" uid="uid://exi4aeygbxwb" path="res://Dungeons/Dungeon.gd" id="1_h7yde"]
-[ext_resource type="Texture2D" uid="uid://cc1pnhhuvln37" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_o6gso"]
-[ext_resource type="Texture2D" uid="uid://c3g66624gc22w" path="res://Dungeons/Art/Portal_Frame.png" id="4_5yopd"]
+[ext_resource type="Texture2D" uid="uid://bn5wvy28erdt0" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_o6gso"]
+[ext_resource type="Texture2D" uid="uid://jndmr7h8gc74" path="res://Dungeons/Art/Portal_Frame.png" id="4_5yopd"]
 [ext_resource type="Script" uid="uid://b1nh0fnwny1ua" path="res://Enemies/EnemyResource.gd" id="4_58m1j"]
 [ext_resource type="Script" uid="uid://byk7eqagv0ecl" path="res://Dungeons/Dungeon_Design.gd" id="4_p08bb"]
 [ext_resource type="Resource" uid="uid://chchf10ok2ih7" path="res://Enemies/Sprayer/Sprayer.tres" id="5_5urn4"]
 [ext_resource type="Resource" uid="uid://d35or6ygc41gw" path="res://Enemies/Sniper/Sniper.tres" id="6_hxsjv"]
-[ext_resource type="FontFile" uid="uid://d2et8whv20jk2" path="res://UI/Pickup Notification/editundo.ttf" id="8_5urn4"]
+[ext_resource type="FontFile" uid="uid://qyymmx2cgefj" path="res://UI/Pickup Notification/editundo.ttf" id="8_5urn4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6o6mh"]
 texture = ExtResource("1_o6gso")
