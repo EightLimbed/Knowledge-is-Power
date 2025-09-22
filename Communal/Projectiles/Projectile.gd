@@ -7,6 +7,7 @@ var direction : float
 var spawn_rot : float
 var texture : Texture2D
 var lifetime : float
+var pierce = 1
 
 func _ready():
 	$Lifetime.wait_time = lifetime
@@ -18,6 +19,8 @@ func _ready():
 func _process(delta):
 	velocity = Vector2(speed,0).rotated(direction)*delta
 	move_and_slide()
+	if pierce <= 0:
+		queue_free()
 
 func _on_lifetime_timeout():
 	queue_free()

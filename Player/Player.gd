@@ -96,6 +96,7 @@ func direction_texture(dir: Vector2):
 #takes damage from projectiles
 func _on_damage_hitbox_body_entered(body):
 	if body.name.begins_with("EProj") and hit <= 0:
+		body.pierce -= 1
 		health -= body.damage
 		if health <= 0:
 			die()

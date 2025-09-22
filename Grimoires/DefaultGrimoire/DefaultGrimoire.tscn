@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bje3fr5ph810v"]
 
 [ext_resource type="Script" uid="uid://bwu2yxfqwuf85" path="res://Grimoires/DefaultGrimoire/DefaultGrimoire.gd" id="1_ksg85"]
-[ext_resource type="Texture2D" uid="uid://b35nnj2cjqj7v" path="res://Grimoires/DefaultGrimoire/Art/DefaultGrimoirClosed.png" id="2_b11pj"]
+[ext_resource type="Texture2D" uid="uid://cshjpfgxf4lhk" path="res://Grimoires/DefaultGrimoire/Art/DefaultGrimoirClosed.png" id="2_b11pj"]
 [ext_resource type="PackedScene" uid="uid://biohwhpugn32w" path="res://Communal/Projectiles/ProjectileEmitter.tscn" id="3_0vmqy"]
 
 [sub_resource type="Curve2D" id="Curve2D_rl2hy"]

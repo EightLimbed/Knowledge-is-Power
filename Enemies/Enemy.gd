@@ -122,6 +122,7 @@ func _on_attack_timer_timeout():
 #takes damage
 func _on_damage_hitbox_body_entered(body):
 	if body.name.begins_with("PProj") and hit <= 0:
+		body.pierce -= 1
 		take_damage(body.damage)
 
 func take_damage(damage):
