@@ -1,3 +1,4 @@
 extends CharacterBody2D
 
-@export var damage : int
+var damage : int
+var pierce = 0

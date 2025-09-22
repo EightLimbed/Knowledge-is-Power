@@ -23,6 +23,7 @@ var random = RandomNumberGenerator.new()
 @export var profile : Enemy
 var projectiles_main
 var player
+var game
 @onready var texture = $EnemyTexture
 @onready var attack_speed = $AttackTimer
 @onready var health_bar = $HealthBar
@@ -31,6 +32,7 @@ func _ready():
 	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
 	afterimages_main = get_tree().get_root().get_node("Game").get_node("AfterimagesContainer")
 	player = get_tree().get_root().get_node("Game").get_node("Player")
+	game = get_tree().get_root().get_node("Game")
 	#gets things from profile
 	texture.sprite_frames = profile.sprite_frames
 	attack_speed.wait_time = profile.attack_speed
@@ -135,6 +137,7 @@ func take_damage(damage):
 #kills enemy when health is below zero
 func death():
 	if health <= 0:
+		game.score += profile.difficulty * 11
 		#add death animation or something
 		queue_free()
 

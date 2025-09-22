@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cf8tu2iaxa5fk"]
 
-[ext_resource type="Texture2D" uid="uid://cp3gn7kqugkpo" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain1.png" id="1_ms7qa"]
-[ext_resource type="Texture2D" uid="uid://c0xrg6sr4j1tk" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain2.png" id="2_a7e17"]
-[ext_resource type="Texture2D" uid="uid://bcbxnw0m6kw6d" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain3.png" id="3_24sf3"]
-[ext_resource type="Texture2D" uid="uid://c1k78q3gck13a" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain4.png" id="4_o8n3m"]
+[ext_resource type="Texture2D" uid="uid://cjwmbo7crla72" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain1.png" id="1_ms7qa"]
+[ext_resource type="Texture2D" uid="uid://b3jwlje8eiuc2" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain2.png" id="2_a7e17"]
+[ext_resource type="Texture2D" uid="uid://7g53t85p33uo" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain3.png" id="3_24sf3"]
+[ext_resource type="Texture2D" uid="uid://c7kyvu6argj80" path="res://Communal/Afterimages/Bloodstains/Art/Bloodstain4.png" id="4_o8n3m"]
 [ext_resource type="Script" uid="uid://btncauwxgxck6" path="res://Communal/Afterimages/Bloodstains/Bloodstains.gd" id="5_irrr4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0f4c"]
@@ -63,9 +63,9 @@ z_index = 1
 position = Vector2(0, -16)
 emitting = false
 amount = 32
-process_material = SubResource("ParticleProcessMaterial_o8qu3")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_o8qu3")
 
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

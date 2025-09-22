@@ -7,12 +7,9 @@ var step : int = 0
 @onready var label = $HBoxContainer/Label
 @onready var icon = $HBoxContainer/TextureRect
 @onready var game = get_parent()
-@onready var enemy_container = game.get_node("EnemiesContainer")
-var enemy_count : int
 
 func _process(_delta) -> void:
 	if step == 0:
-		enemy_count =  enemy_container.get_child_count()
 		label.text = "WASD or arrows to move."
 		icon.visible = false
 		if Input.is_action_just_pressed("ui_down"):
@@ -39,7 +36,7 @@ func _process(_delta) -> void:
 		icon.visible = true
 		label.text = "Kill 3 enemies."
 		icon.texture = icon_list[2]
-		if enemy_count-enemy_container.get_child_count() >= 3:
+		if game.score >= 99:
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 5:
 		icon.visible = false

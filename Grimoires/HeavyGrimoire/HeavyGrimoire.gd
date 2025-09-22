@@ -11,7 +11,6 @@ var speed : int = 100
 @onready var path : PathFollow2D = $Path2D/PathFollow2D
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 
-
 func _process(delta):
 	if Input.is_action_pressed("Mouse") and player.mana >= 20:
 		grow_to(Vector2(3,3), 8, delta)
