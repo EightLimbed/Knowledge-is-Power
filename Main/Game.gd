@@ -28,3 +28,14 @@ func _on_dungeon_next_level():
 func clear_children(node):
 	for n in node.get_children():
 		n.queue_free()
+
+func player_death():
+	$HUD/VBoxContainer.hide()
+	$HUD/Death.show()
+	$Tutorial.hide()
+	clear_children($EnemiesContainer)
+	clear_children($ProjectilesContainer)
+	player.hide()
+
+func _on_texture_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://UI/Menu/MainMenu.tscn")

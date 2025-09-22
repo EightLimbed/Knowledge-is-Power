@@ -13,9 +13,9 @@ var speed : int = 150
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 
 func _process(delta):
-	if Input.is_action_pressed("Mouse") and player.mana >= 30*delta:
+	if Input.is_action_pressed("Mouse") and player.mana >= 10*delta:
 		grow_to(Vector2(1.8,1.8), 4, delta)
-		player.mana -= 30*delta
+		player.mana -= 10*delta
 	else:
 		grow_to(Vector2(1,1), -4, delta)
 

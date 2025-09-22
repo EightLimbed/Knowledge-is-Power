@@ -24,11 +24,11 @@ func _on_body_entered(body: Node2D) -> void:
 		body.health += 50
 	elif type == 1:
 		if random.randi_range(0,1) == 0:
-			$CanvasLayer/HBoxContainer/Label.text = "+100 Mana"
-			body.max_mana += 100
+			$CanvasLayer/HBoxContainer/Label.text = "+150 Mana"
+			body.max_mana += 150
 		else:
-			$CanvasLayer/HBoxContainer/Label.text = "+20 Mana Charge"
-			body.mana_regen += 20
+			$CanvasLayer/HBoxContainer/Label.text = "+30 Mana Charge"
+			body.mana_regen += 30
 	else:
 		$CanvasLayer/HBoxContainer/Label.text = "New Grimoire"
 		body.add_grimoire(grimoires[type-2])

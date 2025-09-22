@@ -21,7 +21,7 @@ func _process(delta):
 		damage.damage = 0
 
 	if round(scale) == Vector2(3,3):
-		damage.damage = 20
+		damage.damage = 40
 	else:
 		damage.damage = 0
 

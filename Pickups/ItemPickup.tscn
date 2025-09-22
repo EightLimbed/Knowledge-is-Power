@@ -27,7 +27,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_vqjx7")
 textures = Array[Texture]([ExtResource("5_5crpb"), ExtResource("6_u3200"), ExtResource("3_tvwk4"), ExtResource("2_vqjx7"), ExtResource("2_da8l3")])
-grimoires = Array[PackedScene]([ExtResource("9_bq5vd"), ExtResource("8_ht4cl"), ExtResource("7_ee50x")])
+grimoires = Array[PackedScene]([ExtResource("9_bq5vd"), ExtResource("7_ee50x"), ExtResource("8_ht4cl")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4u151")

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var texture
+@onready var texture = $PlayerTexture
 
 #movement
 var input = Vector2(0,0)
@@ -10,33 +10,28 @@ var dash_length : float = 0.1
 var dash_time : float = 0.0
 @export var dash_charge : float = 0.0
 @export var dash_cooldown : float = 400
+@onready var game = get_tree().get_root().get_node("Game")
 
 #projectiles
 var bullets_total : int = 0
 var projectile = preload("res://Communal/Projectiles/Projectile.tscn")
-var projectiles_main
+@onready var projectiles_main = game.get_node("ProjectilesContainer")
 
 #blood splatter
 var blood_splatter = preload("res://Communal/Afterimages/Bloodstains/Bloodstains.tscn")
-var afterimages_main
+@onready var afterimages_main = game.get_node("AfterimagesContainer")
 
 #stats
 @export var health : int = 100
 @export var max_health : int = 100
 @export var mana : float = 200
-@export var max_mana : int = 400
-@export var mana_regen : int = 40
+@export var max_mana : int = 500
+@export var mana_regen : int = 50
 var hit : float = 0
 @onready var grimoires_container = $GrimoiresContainer
 
 func _ready():
 	pattern_children()
-	#projectiles
-	projectiles_main = get_tree().get_root().get_node("Game").get_node("ProjectilesContainer")
-	#bloodstains
-	afterimages_main = get_tree().get_root().get_node("Game").get_node("AfterimagesContainer")
-	#texture
-	texture = $PlayerTexture
 
 func _physics_process(delta):
 	#RenderingServer.global_shader_parameter_set("player_pos", position)
@@ -102,6 +97,8 @@ func direction_texture(dir: Vector2):
 func _on_damage_hitbox_body_entered(body):
 	if body.name.begins_with("EProj") and hit <= 0:
 		health -= body.damage
+		if health <= 0:
+			die()
 		texture.self_modulate.a = 100
 		splatter()
 		hit = 0.5
@@ -128,6 +125,9 @@ func splatter():
 	var instance = blood_splatter.instantiate()
 	instance.global_position = global_position
 	afterimages_main.add_child.call_deferred(instance)
+
+func die():
+	game.player_death()
 
 #makes grimoires look good
 func stagger_grimoires():

@@ -1,15 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=17 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" uid="uid://bxc1xq2mr1yjf" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
 [ext_resource type="PackedScene" uid="uid://imjbg5m6uhty" path="res://Player/Player.tscn" id="3_u20kj"]
-[ext_resource type="Script" uid="uid://qki16b8tjek5" path="res://UI/HUD/FPS.gd" id="4_eel0q"]
 [ext_resource type="PackedScene" uid="uid://c5y104ym601rl" path="res://Pickups/ItemPickup.tscn" id="4_gcscy"]
 [ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="5_gk5jb"]
+[ext_resource type="FontFile" uid="uid://qyymmx2cgefj" path="res://UI/Pickup Notification/editundo.ttf" id="5_hiksi"]
 [ext_resource type="PackedScene" uid="uid://f1f1hktrckvd" path="res://UI/HUD/ProgressBars/DashBar.tscn" id="5_idogn"]
 [ext_resource type="PackedScene" uid="uid://gjqrao5c4hiw" path="res://UI/HUD/Crosshair/AimingCrosshair.tscn" id="7_k0sf7"]
 [ext_resource type="PackedScene" uid="uid://cvrfe7rsa7vhr" path="res://UI/HUD/ProgressBars/ManaBar.tscn" id="7_s78lh"]
+[ext_resource type="Texture2D" uid="uid://dp56k2s8gtxf" path="res://UI/Menu/Art/Button.png" id="9_nd422"]
+[ext_resource type="Texture2D" uid="uid://cqutvdxksiu7o" path="res://UI/Menu/Art/ButtonHover.png" id="10_22xp4"]
 [ext_resource type="PackedScene" uid="uid://bcny128t8mbcb" path="res://Main/Tutorial.tscn" id="11_hiksi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gcscy"]
+font = ExtResource("5_hiksi")
+font_size = 48
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_itt6b"]
+font = ExtResource("5_hiksi")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_22xp4"]
+offsets = PackedFloat32Array(0.0909091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.439049, 0.439049, 0.439049, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_itt6b"]
+gradient = SubResource("Gradient_22xp4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -41,19 +64,6 @@ y_sort_enabled = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="FPS" type="Label" parent="HUD"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -60.0
-offset_right = -20.0
-offset_bottom = 26.0
-grow_horizontal = 0
-text = "FPS:"
-horizontal_alignment = 2
-script = ExtResource("4_eel0q")
-metadata/_edit_use_anchors_ = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 custom_minimum_size = Vector2(64, 16)
 offset_left = 24.0
@@ -71,19 +81,67 @@ layout_mode = 2
 custom_minimum_size = Vector2(48, 16)
 layout_mode = 2
 
+[node name="Death" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.462745)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Death"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -84.0
+offset_right = 97.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/Death/VBoxContainer"]
+layout_mode = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_gcscy")
+
+[node name="TextureButton" type="TextureButton" parent="HUD/Death/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_nd422")
+texture_hover = ExtResource("10_22xp4")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HUD/Death/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU"
+label_settings = SubResource("LabelSettings_itt6b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AimingCrosshair" parent="." instance=ExtResource("7_k0sf7")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 z_index = -100
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_itt6b")
 
 [node name="Tutorial" parent="." instance=ExtResource("11_hiksi")]
 
 [connection signal="next_level" from="Dungeon" to="." method="_on_dungeon_next_level"]
+[connection signal="pressed" from="HUD/Death/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

@@ -18,8 +18,8 @@ var projectile_texture = preload("res://Grimoires/DefaultGrimoire/Art/DefaultGri
 
 func _process(delta):
 	if attack >= attack_speed:
-		if Input.is_action_pressed("Mouse") and player.mana >= 25:
-			player.mana -= 25
+		if Input.is_action_pressed("Mouse") and player.mana >= 30:
+			player.mana -= 30
 			attack = 0
 			#shoot(texture, spawn, target, multishot, spread, lifetime, speed, damage)
 			projectile_emitter.shoot(projectile_texture, "PProj", grimoire.global_position - Vector2(0,28), get_global_mouse_position(), 1, 0, 1, 40000, 7)

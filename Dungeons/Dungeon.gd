@@ -45,7 +45,7 @@ func new_level():
 	clear_layer(0)
 	clear_layer(1)
 	#gets dungeon design
-	$Designer.design_dungeon(Vector2(0,0), current_level*2+4, 1)
+	$Designer.design_dungeon(Vector2(0,0), min(current_level*2+4,10), 1)
 	#gets important values
 	ground = $Designer.ground
 	walls = $Designer.walls
@@ -72,7 +72,7 @@ func setup_dungeon():
 		spawn_enemies(room_centers[i+1], random.randi_range(current_level*2+5, current_level*2+10))
 
 	#spawns random powerup(s) (always base grimoire on level 1)
-	var powerup_count = min((current_level)*3,25)
+	var powerup_count = min((current_level)*3,10)
 	for i in powerup_count:
 		var instance = pickup.instantiate()
 		instance.position = Vector2(cos(2*i*PI/powerup_count), sin(2*i*PI/powerup_count))*128.0
