@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dj3y6360yjr5g"]
+[gd_scene load_steps=12 format=3 uid="uid://dj3y6360yjr5g"]
 
 [ext_resource type="Script" uid="uid://dt6vkmrtkesbe" path="res://UI/HUD/Mobile/Mobile.gd" id="1_sfytq"]
 [ext_resource type="Texture2D" uid="uid://bacvgnw12uxja" path="res://UI/HUD/Mobile/Art/TouchButton.png" id="2_b45tg"]
 [ext_resource type="Texture2D" uid="uid://bi1oov6q66wku" path="res://UI/HUD/Mobile/Art/TouchButtonPress.png" id="3_d1nq8"]
 [ext_resource type="Texture2D" uid="uid://gtf4sg7y5vsu" path="res://UI/HUD/Mobile/Art/DashButton.png" id="4_305v5"]
 [ext_resource type="Texture2D" uid="uid://d3anslx35vqv" path="res://UI/HUD/Mobile/Art/DashButtonPressed.png" id="5_v0ybs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbqgb"]
+size = Vector2(640, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1nq8"]
 size = Vector2(32, 32)
@@ -24,10 +27,9 @@ size = Vector2(32, 32)
 [node name="Mobile" type="CanvasLayer"]
 script = ExtResource("1_sfytq")
 
-[node name="Shoot" type="TextureButton" parent="."]
-custom_minimum_size = Vector2(640, 360)
-offset_right = 640.0
-offset_bottom = 360.0
+[node name="Shoot" type="TouchScreenButton" parent="."]
+position = Vector2(320, 180)
+shape = SubResource("RectangleShape2D_cbqgb")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -70,13 +72,12 @@ shape = SubResource("RectangleShape2D_v0ybs")
 visibility_mode = 1
 
 [node name="Dash" type="TouchScreenButton" parent="Control"]
-position = Vector2(608, 32)
 texture_normal = ExtResource("4_305v5")
 texture_pressed = ExtResource("5_v0ybs")
 shape = SubResource("RectangleShape2D_ltes6")
 
-[connection signal="button_down" from="Shoot" to="." method="_on_shoot_button_down"]
-[connection signal="button_up" from="Shoot" to="." method="_on_shoot_button_up"]
+[connection signal="pressed" from="Shoot" to="." method="_on_shoot_pressed"]
+[connection signal="released" from="Shoot" to="." method="_on_shoot_released"]
 [connection signal="pressed" from="Control/Up" to="." method="_on_up_pressed"]
 [connection signal="released" from="Control/Up" to="." method="_on_up_released"]
 [connection signal="pressed" from="Control/Down" to="." method="_on_down_pressed"]

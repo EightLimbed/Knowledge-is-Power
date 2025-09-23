@@ -40,8 +40,8 @@ func _on_dash_released() -> void:
 	dash = false
 
 #shoot
-func _on_shoot_button_down() -> void:
+func _on_shoot_pressed() -> void:
 	shoot = true
 
-func _on_shoot_button_up() -> void:
+func _on_shoot_released() -> void:
 	shoot = false
