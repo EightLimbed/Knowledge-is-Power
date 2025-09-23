@@ -3,6 +3,7 @@ extends CanvasLayer
 var input : Vector2 = Vector2.ZERO
 var dash : bool = false
 var shoot : bool = false
+var mobile_controls : bool = false
 
 #up
 func _on_up_pressed() -> void:

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d3anslx35vqv" path="res://UI/HUD/Mobile/Art/DashButtonPressed.png" id="5_v0ybs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbqgb"]
-size = Vector2(640, 360)
+size = Vector2(544, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1nq8"]
 size = Vector2(32, 32)
@@ -28,10 +28,11 @@ size = Vector2(32, 32)
 script = ExtResource("1_sfytq")
 
 [node name="Shoot" type="TouchScreenButton" parent="."]
-position = Vector2(320, 180)
+position = Vector2(368, 180)
 shape = SubResource("RectangleShape2D_cbqgb")
 
 [node name="Control" type="Control" parent="."]
+z_index = 1
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -45,6 +46,7 @@ position = Vector2(32, 0)
 texture_normal = ExtResource("2_b45tg")
 texture_pressed = ExtResource("3_d1nq8")
 shape = SubResource("RectangleShape2D_d1nq8")
+passby_press = true
 visibility_mode = 1
 
 [node name="Down" type="TouchScreenButton" parent="Control"]
@@ -53,6 +55,7 @@ rotation = -3.14159
 texture_normal = ExtResource("2_b45tg")
 texture_pressed = ExtResource("3_d1nq8")
 shape = SubResource("RectangleShape2D_rd8os")
+passby_press = true
 visibility_mode = 1
 
 [node name="Right" type="TouchScreenButton" parent="Control"]
@@ -61,6 +64,7 @@ rotation = 1.5708
 texture_normal = ExtResource("2_b45tg")
 texture_pressed = ExtResource("3_d1nq8")
 shape = SubResource("RectangleShape2D_305v5")
+passby_press = true
 visibility_mode = 1
 
 [node name="Left" type="TouchScreenButton" parent="Control"]
@@ -69,12 +73,15 @@ rotation = -1.5708
 texture_normal = ExtResource("2_b45tg")
 texture_pressed = ExtResource("3_d1nq8")
 shape = SubResource("RectangleShape2D_v0ybs")
+passby_press = true
 visibility_mode = 1
 
 [node name="Dash" type="TouchScreenButton" parent="Control"]
 texture_normal = ExtResource("4_305v5")
 texture_pressed = ExtResource("5_v0ybs")
 shape = SubResource("RectangleShape2D_ltes6")
+passby_press = true
+visibility_mode = 1
 
 [connection signal="pressed" from="Shoot" to="." method="_on_shoot_pressed"]
 [connection signal="released" from="Shoot" to="." method="_on_shoot_released"]

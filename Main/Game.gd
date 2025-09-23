@@ -8,6 +8,10 @@ extends Node2D
 #grimoire weightings
 var weightings = [0,0,1,1,1,1,3,4]
 var score = 0
+var mobile : bool
+
+func _ready():
+	$Player/Mobile/Control.visible = mobile
 
 func _process(_delta):
 	healthbar.update(0, player.health, player.max_health)

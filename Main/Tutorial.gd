@@ -10,7 +10,7 @@ var step : int = 0
 
 func _process(_delta) -> void:
 	if step == 0:
-		if DisplayServer.is_touchscreen_available():
+		if game.mobile:
 			label.text = "Arrow buttons to move."
 		else:
 			label.text = "WASD or arrows to move."
@@ -24,10 +24,10 @@ func _process(_delta) -> void:
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 2:
 		icon.visible = false
-		if DisplayServer.is_touchscreen_available():
-			label.text = "Press anywhere to shoot at nearest enemy (autoaims)."
+		if game.mobile:
+			label.text = "Press anywhere to shoot (autoaims)"
 		else:
-			label.text = "Mouse buttons to shoot at nearest enemy."
+			label.text = "Left click to shoot (autoaims)"
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 3:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dor8i5dhegq1n"]
+[gd_scene load_steps=12 format=3 uid="uid://dor8i5dhegq1n"]
 
 [ext_resource type="Texture2D" uid="uid://c3tsid2ire8nn" path="res://UI/Menu/Art/EvilBackground.png" id="1_87wbn"]
 [ext_resource type="Script" uid="uid://4043lwmuo7my" path="res://UI/Menu/MainMenu.gd" id="1_l5f55"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dp56k2s8gtxf" path="res://UI/Menu/Art/Button.png" id="2_sjuxb"]
 [ext_resource type="FontFile" uid="uid://qyymmx2cgefj" path="res://UI/Pickup Notification/editundo.ttf" id="3_c5na2"]
 [ext_resource type="Texture2D" uid="uid://cqutvdxksiu7o" path="res://UI/Menu/Art/ButtonHover.png" id="3_tmv82"]
+[ext_resource type="Texture2D" uid="uid://cf8neao35wtck" path="res://Pickups/Art/Bubble.png" id="7_nh81y"]
+[ext_resource type="Texture2D" uid="uid://1ioh7ukhxpqv" path="res://Pickups/Art/BubblePressed.png" id="8_6qwer"]
+[ext_resource type="Texture2D" uid="uid://cm1ompf0tjy4k" path="res://Pickups/Art/BubbleHover.png" id="9_v0p8s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eo5rg"]
 font = ExtResource("3_c5na2")
@@ -64,7 +67,7 @@ label_settings = SubResource("LabelSettings_eo5rg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -83,11 +86,47 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = -37.0
+offset_top = -45.0
 offset_right = 199.0
-offset_bottom = -8.0
+offset_bottom = -16.0
 grow_vertical = 0
 text = "HighScore: 67"
 label_settings = SubResource("LabelSettings_eo5rg")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -263.0
+offset_top = -45.0
+offset_right = -72.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Mobile:"
+label_settings = SubResource("LabelSettings_eo5rg")
+horizontal_alignment = 2
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("7_nh81y")
+texture_pressed = ExtResource("8_6qwer")
+texture_hover = ExtResource("9_v0p8s")
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="toggled" from="TextureButton2" to="." method="_on_texture_button_2_toggled"]
