@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 var input : Vector2 = Vector2.ZERO
+var dash : bool = false
+var shoot : bool = false
 
 #up
 func _on_up_pressed() -> void:
@@ -29,3 +31,17 @@ func _on_left_pressed() -> void:
 
 func _on_left_released() -> void:
 	input.x += 1
+
+#dash
+func _on_dash_pressed() -> void:
+	dash = true
+
+func _on_dash_released() -> void:
+	dash = false
+
+#shoot
+func _on_shoot_button_down() -> void:
+	shoot = true
+
+func _on_shoot_button_up() -> void:
+	shoot = false

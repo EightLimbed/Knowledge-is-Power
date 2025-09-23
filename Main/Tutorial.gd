@@ -25,10 +25,10 @@ func _process(_delta) -> void:
 	if step == 2:
 		icon.visible = false
 		if DisplayServer.is_touchscreen_available():
-			label.text = "Press to shoot at that area."
+			label.text = "Press anywhere to shoot at nearest enemy (autoaims)."
 		else:
-			label.text = "Mouse buttons to shoot."
-		if Input.is_action_just_pressed("Mouse"):
+			label.text = "Mouse buttons to shoot at nearest enemy."
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 3:
 		icon.visible = true

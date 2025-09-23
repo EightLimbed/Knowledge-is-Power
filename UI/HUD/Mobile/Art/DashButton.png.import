@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba6jv7cpipffq"
-path="res://.godot/imported/AimingCrosshair.png-d43c0cd58823a061486a09bb25dbf96d.ctex"
+uid="uid://gtf4sg7y5vsu"
+path="res://.godot/imported/DashButton.png-c6ade5aae227b437b2b32507aaf9c3b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/HUD/Crosshair/Art/AimingCrosshair.png"
-dest_files=["res://.godot/imported/AimingCrosshair.png-d43c0cd58823a061486a09bb25dbf96d.ctex"]
+source_file="res://UI/HUD/Mobile/Art/DashButton.png"
+dest_files=["res://.godot/imported/DashButton.png-c6ade5aae227b437b2b32507aaf9c3b3.ctex"]
 
 [params]
 

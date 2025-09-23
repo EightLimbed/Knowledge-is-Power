@@ -9,9 +9,6 @@ extends Node2D
 var weightings = [0,0,1,1,1,1,3,4]
 var score = 0
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-
 func _process(_delta):
 	healthbar.update(0, player.health, player.max_health)
 	dashbar.update(0, player.dash_charge, player.dash_cooldown)

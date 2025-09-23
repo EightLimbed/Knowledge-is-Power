@@ -38,7 +38,7 @@ func _physics_process(delta):
 	#gets direction of input
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-	input += $TouchScreenButton.input
+	input += $Mobile.input
 	#moves
 	velocity = input.normalized()*speed*delta*Vector2(1,0.5)
 
@@ -107,7 +107,7 @@ func _on_damage_hitbox_body_entered(body):
 #handles dash
 func dash(delta):
 	#starts dash if cooldown is over
-	if Input.is_action_just_pressed("ui_accept") and dash_charge >= dash_cooldown:
+	if (Input.is_action_just_pressed("ui_accept") or $Mobile.dash) and dash_charge >= dash_cooldown:
 		dash_time = dash_length
 		dash_charge = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=16 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" uid="uid://bxc1xq2mr1yjf" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b3gn06ty82qy8" path="res://UI/HUD/ProgressBars/HealthBar.tscn" id="5_gk5jb"]
 [ext_resource type="FontFile" uid="uid://qyymmx2cgefj" path="res://UI/Pickup Notification/editundo.ttf" id="5_hiksi"]
 [ext_resource type="PackedScene" uid="uid://f1f1hktrckvd" path="res://UI/HUD/ProgressBars/DashBar.tscn" id="5_idogn"]
-[ext_resource type="PackedScene" uid="uid://gjqrao5c4hiw" path="res://UI/HUD/Crosshair/AimingCrosshair.tscn" id="7_k0sf7"]
 [ext_resource type="PackedScene" uid="uid://cvrfe7rsa7vhr" path="res://UI/HUD/ProgressBars/ManaBar.tscn" id="7_s78lh"]
 [ext_resource type="Texture2D" uid="uid://dp56k2s8gtxf" path="res://UI/Menu/Art/Button.png" id="9_nd422"]
 [ext_resource type="Texture2D" uid="uid://cqutvdxksiu7o" path="res://UI/Menu/Art/ButtonHover.png" id="10_22xp4"]
@@ -145,8 +144,6 @@ grow_horizontal = 0
 text = "Score: 67"
 label_settings = SubResource("LabelSettings_gcscy")
 horizontal_alignment = 2
-
-[node name="AimingCrosshair" parent="." instance=ExtResource("7_k0sf7")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

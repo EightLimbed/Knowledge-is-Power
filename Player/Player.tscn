@@ -76,6 +76,6 @@ shape = SubResource("CircleShape2D_bthhx")
 y_sort_enabled = true
 position = Vector2(0, 8)
 
-[node name="TouchScreenButton" parent="." instance=ExtResource("10_0j2ni")]
+[node name="Mobile" parent="." instance=ExtResource("10_0j2ni")]
 
 [connection signal="body_entered" from="DamageHitbox" to="." method="_on_damage_hitbox_body_entered"]
