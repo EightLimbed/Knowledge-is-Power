@@ -5,6 +5,8 @@ var type = 0
 
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 
+@onready var shoot_detector = get_tree().get_root().get_node("Game").get_node("AimingCrosshair")
+
 var speed : int = 75
 var path_offset : float = 0.0
 var path_prog : float = 0.0
@@ -18,7 +20,7 @@ var projectile_texture = preload("res://Grimoires/DefaultGrimoire/Art/DefaultGri
 
 func _process(delta):
 	if attack >= attack_speed:
-		if Input.is_action_pressed("Mouse") and player.mana >= 30:
+		if shoot_detector.pressed and player.mana >= 30:
 			player.mana -= 30
 			attack = 0
 			#shoot(texture, spawn, target, multishot, spread, lifetime, speed, damage)

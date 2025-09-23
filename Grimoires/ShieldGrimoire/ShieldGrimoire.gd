@@ -3,6 +3,8 @@ extends Node2D
 
 var type = 2
 
+@onready var shoot_detector = get_tree().get_root().get_node("Game").get_node("AimingCrosshair")
+
 @onready var grimoire = $Path2D/PathFollow2D/Texture
 var path_offset : float
 var path_prog : float
@@ -13,7 +15,7 @@ var speed : int = 150
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 
 func _process(delta):
-	if Input.is_action_pressed("Mouse") and player.mana >= 10*delta:
+	if shoot_detector.pressed and player.mana >= 10*delta:
 		grow_to(Vector2(1.8,1.8), 4, delta)
 		player.mana -= 10*delta
 	else:

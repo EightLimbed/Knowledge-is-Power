@@ -10,10 +10,12 @@ var step : int = 0
 
 func _process(_delta) -> void:
 	if step == 0:
-		label.text = "WASD or arrows to move."
+		if DisplayServer.is_touchscreen_available():
+			label.text = "Arrow buttons to move."
+		else:
+			label.text = "WASD or arrows to move."
 		icon.visible = false
-		if Input.is_action_just_pressed("ui_down"):
-			if $Timer.time_left == 0.0: $Timer.start()
+		if $Timer.time_left == 0.0: $Timer.start(2.0)
 	if step == 1:
 		label.text = "Pick up the grimoire."
 		icon.visible = true
@@ -22,7 +24,10 @@ func _process(_delta) -> void:
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 2:
 		icon.visible = false
-		label.text = "Mouse buttons to shoot."
+		if DisplayServer.is_touchscreen_available():
+			label.text = "Press to shoot at that area."
+		else:
+			label.text = "Mouse buttons to shoot."
 		if Input.is_action_just_pressed("Mouse"):
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 3:

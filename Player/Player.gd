@@ -38,7 +38,7 @@ func _physics_process(delta):
 	#gets direction of input
 	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-
+	input += $TouchScreenButton.input
 	#moves
 	velocity = input.normalized()*speed*delta*Vector2(1,0.5)
 

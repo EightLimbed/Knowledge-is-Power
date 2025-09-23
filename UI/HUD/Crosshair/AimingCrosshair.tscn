@@ -1,15 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://gjqrao5c4hiw"]
 
 [ext_resource type="Script" uid="uid://lx2g72pooxi" path="res://UI/HUD/Crosshair/AimingCrosshair.gd" id="1_d7ujo"]
-[ext_resource type="Texture2D" uid="uid://csanoju38efe3" path="res://UI/HUD/Crosshair/Art/AimingCrosshair.png" id="2_otntf"]
+[ext_resource type="Texture2D" uid="uid://ba6jv7cpipffq" path="res://UI/HUD/Crosshair/Art/AimingCrosshair.png" id="2_otntf"]
 
 [node name="AimingCrosshair" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_d7ujo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="TextureButton" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -16)
-texture = ExtResource("2_otntf")
-offset = Vector2(0, 16)
+offset_left = -32.0
+offset_top = -16.0
+offset_right = -32.0
+offset_bottom = -16.0
+texture_normal = ExtResource("2_otntf")
+texture_pressed = ExtResource("2_otntf")
+
+[connection signal="button_down" from="Sprite2D" to="." method="_on_sprite_2d_button_down"]
+[connection signal="button_up" from="Sprite2D" to="." method="_on_sprite_2d_button_up"]

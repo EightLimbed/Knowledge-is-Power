@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj3y6360yjr5g"]
+
+[ext_resource type="Script" uid="uid://dt6vkmrtkesbe" path="res://UI/HUD/Mobile/Mobile.gd" id="1_sfytq"]
+[ext_resource type="Texture2D" uid="uid://bacvgnw12uxja" path="res://UI/HUD/Mobile/Art/TouchButton.png" id="2_b45tg"]
+[ext_resource type="Texture2D" uid="uid://bi1oov6q66wku" path="res://UI/HUD/Mobile/Art/TouchButtonPress.png" id="3_d1nq8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1nq8"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd8os"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_305v5"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0ybs"]
+size = Vector2(32, 32)
+
+[node name="Mobile" type="CanvasLayer"]
+script = ExtResource("1_sfytq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 96.0
+grow_vertical = 0
+
+[node name="Up" type="TouchScreenButton" parent="Control"]
+position = Vector2(32, 0)
+texture_normal = ExtResource("2_b45tg")
+texture_pressed = ExtResource("3_d1nq8")
+shape = SubResource("RectangleShape2D_d1nq8")
+visibility_mode = 1
+
+[node name="Down" type="TouchScreenButton" parent="Control"]
+position = Vector2(64, 64)
+rotation = -3.14159
+texture_normal = ExtResource("2_b45tg")
+texture_pressed = ExtResource("3_d1nq8")
+shape = SubResource("RectangleShape2D_rd8os")
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="Control"]
+position = Vector2(96, 32)
+rotation = 1.5708
+texture_normal = ExtResource("2_b45tg")
+texture_pressed = ExtResource("3_d1nq8")
+shape = SubResource("RectangleShape2D_305v5")
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="Control"]
+position = Vector2(0, 64)
+rotation = -1.5708
+texture_normal = ExtResource("2_b45tg")
+texture_pressed = ExtResource("3_d1nq8")
+shape = SubResource("RectangleShape2D_v0ybs")
+visibility_mode = 1
+
+[connection signal="pressed" from="Control/Up" to="." method="_on_up_pressed"]
+[connection signal="released" from="Control/Up" to="." method="_on_up_released"]
+[connection signal="pressed" from="Control/Down" to="." method="_on_down_pressed"]
+[connection signal="released" from="Control/Down" to="." method="_on_down_released"]
+[connection signal="pressed" from="Control/Right" to="." method="_on_right_pressed"]
+[connection signal="released" from="Control/Right" to="." method="_on_right_released"]
+[connection signal="pressed" from="Control/Left" to="." method="_on_left_pressed"]
+[connection signal="released" from="Control/Left" to="." method="_on_left_released"]
