@@ -24,7 +24,7 @@ class_name Enemy
 #bullet spread between each shot
 @export var spread : int
 #bullet lifetime in seconds
-@export var projectile_lifetime : int
+@export var projectile_lifetime : float
 #projectile speed
 @export var projectile_speed : int
 
@@ -34,7 +34,7 @@ class_name Enemy
 #distance from player before attacking starts, in pixels
 @export var attack_distance : int
 #distance where enemy starts chasing, in pixels
-@export var agro_distance : int
+@export var agro_distance : int = 400
 
 #difficulty weight
 @export var difficulty : int

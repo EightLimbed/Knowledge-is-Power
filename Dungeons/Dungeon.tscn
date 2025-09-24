@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfddkmtljoe24"]
+[gd_scene load_steps=16 format=3 uid="uid://bfddkmtljoe24"]
 
 [ext_resource type="Script" uid="uid://exi4aeygbxwb" path="res://Dungeons/Dungeon.gd" id="1_h7yde"]
 [ext_resource type="Texture2D" uid="uid://bn5wvy28erdt0" path="res://Dungeons/Art/Dungeon_Tiles.png" id="1_o6gso"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://byk7eqagv0ecl" path="res://Dungeons/Dungeon_Design.gd" id="4_p08bb"]
 [ext_resource type="Resource" uid="uid://chchf10ok2ih7" path="res://Enemies/Sprayer/Sprayer.tres" id="5_5urn4"]
 [ext_resource type="Resource" uid="uid://d35or6ygc41gw" path="res://Enemies/Sniper/Sniper.tres" id="6_hxsjv"]
+[ext_resource type="Resource" uid="uid://bxejc027r6l83" path="res://Enemies/Cyclops/Cyclops.tres" id="7_hxsjv"]
 [ext_resource type="FontFile" uid="uid://qyymmx2cgefj" path="res://UI/Pickup Notification/editundo.ttf" id="8_5urn4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6o6mh"]
@@ -67,7 +68,7 @@ layer_0/y_sort_origin = -100
 layer_1/name = "Walls"
 layer_1/y_sort_enabled = true
 script = ExtResource("1_h7yde")
-enemies = Array[ExtResource("4_58m1j")]([ExtResource("5_5urn4"), ExtResource("6_hxsjv")])
+enemies = Array[ExtResource("4_58m1j")]([ExtResource("5_5urn4"), ExtResource("6_hxsjv"), ExtResource("7_hxsjv"), ExtResource("6_hxsjv"), ExtResource("7_hxsjv"), ExtResource("5_5urn4")])
 
 [node name="Designer" type="Node2D" parent="."]
 top_level = true

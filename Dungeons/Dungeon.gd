@@ -94,6 +94,7 @@ func spawn_enemies(current_room, difficulty):
 		var instance = base_enemy.instantiate()
 		var spawn_offset = Vector2(random.randi_range(-14,14), random.randi_range(-14,14))
 		instance.profile = enemy
+		instance.profile.max_health *= (current_level+1)**0.2
 		instance.spawn_pos = map_to_local(current_room+spawn_offset)
 		enemy_container.add_child.call_deferred(instance)
 		difficulty -= enemy.difficulty

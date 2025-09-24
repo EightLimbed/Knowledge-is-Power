@@ -7,7 +7,6 @@ var hover_ease : bool
 var attacking : bool
 var input : Vector2
 var hit : float
-var personality : Vector2
 
 #for naming bullets properly
 @onready var projectile_emitter = $ProjectileEmitter
@@ -39,29 +38,27 @@ func _ready():
 	health = profile.max_health
 	#goes to spawn
 	global_position = spawn_pos
-	personality = Vector2(random.randi_range(-2,2), random.randi_range(-2,2))
 
-func _physics_process(delta):
-	#updates health and does immunity frames
+func _physics_process(delta: float) -> void:
 	health_bar.update(0, health, profile.max_health)
-	#hit -= delta
-
-	#behavior
-	if agro:
-		visible = true
-		input_to_player()
-		direction_texture()
-		if not hover and not attacking:
-			velocity = input.normalized()*profile.speed*delta*Vector2(1,0.5)
-		elif hover:
-			velocity = -input.normalized()*profile.speed*delta*Vector2(0.5,0.25)*personality
-		move_and_slide()
-	else:
-		visible = false
-
-#gets enemy pointing towards player
-func input_to_player():
-	input = (player.position-position).normalized()
+	input = -(position-player.position).normalized()
+	direction_texture()
+	# distance to player used for ranges
+	var dist_to_player = (position-player.position).length()
+	if dist_to_player < profile.agro_distance:
+		#smooths movement
+		var smooth = clamp(abs(dist_to_player-profile.hover_distance)/100.0,0.0,1.0)
+		#checks if too close or too far from player
+		if dist_to_player > profile.hover_distance:
+			velocity = delta*input*profile.speed*smooth*Vector2(1.0,0.5) #move towards player
+		else:
+			velocity = -delta*input*profile.speed*smooth*Vector2(1.0,0.5) #move away
+		#shoots at player if it can
+		if dist_to_player < profile.attack_distance:
+			attacking = true
+		else:
+			attacking = false
+	move_and_slide()
 
 #directional costumes
 func direction_texture():
@@ -89,30 +86,6 @@ func direction_texture():
 	#315
 	elif round(input) == Vector2(1,1):
 		texture.frame = 7
-
-#behavior signals
-func _on_aggro_distance_body_entered(_body):
-	agro = true
-
-
-func _on_aggro_distance_body_exited(_body):
-	agro = false
-
-
-func _on_attack_distance_body_entered(_body):
-	attacking = true
-
-
-func _on_attack_distance_body_exited(_body):
-	attacking = false
-
-
-func _on_hover_distance_body_entered(_body):
-	hover = true
-
-
-func _on_hover_distance_body_exited(_body):
-	hover = false
 
 #attacking
 func _on_attack_timer_timeout():

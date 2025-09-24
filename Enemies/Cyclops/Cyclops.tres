@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=12 format=3 uid="uid://bxejc027r6l83"]
+
+[ext_resource type="Texture2D" uid="uid://dwp2ivlif818d" path="res://Enemies/Cyclops/Art/CyclopsProjectile.png" id="1_7u7xy"]
+[ext_resource type="Script" uid="uid://b1nh0fnwny1ua" path="res://Enemies/EnemyResource.gd" id="1_yckof"]
+[ext_resource type="Texture2D" uid="uid://cef2xw52fl5gd" path="res://Enemies/Cyclops/Art/Cyclops0.png" id="2_vqmhu"]
+[ext_resource type="Texture2D" uid="uid://d0di8bnaj71ad" path="res://Enemies/Cyclops/Art/Cyclops45.png" id="3_7u7xy"]
+[ext_resource type="Texture2D" uid="uid://cwjkwrb5gr267" path="res://Enemies/Cyclops/Art/Cyclops90.png" id="4_x0dae"]
+[ext_resource type="Texture2D" uid="uid://b2ryc65wph8tf" path="res://Enemies/Cyclops/Art/Cyclops135.png" id="5_77514"]
+[ext_resource type="Texture2D" uid="uid://7tngkuie1nel" path="res://Enemies/Cyclops/Art/Cyclops180.png" id="6_k05vo"]
+[ext_resource type="Texture2D" uid="uid://cftv6mawp6anb" path="res://Enemies/Cyclops/Art/Cyclops225.png" id="7_mqluf"]
+[ext_resource type="Texture2D" uid="uid://dykcacjjpt1qc" path="res://Enemies/Cyclops/Art/Cyclops270.png" id="8_3fbnu"]
+[ext_resource type="Texture2D" uid="uid://btvyx18d0xi7i" path="res://Enemies/Cyclops/Art/Cyclops315.png" id="9_uonmo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ru5i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vqmhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7u7xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x0dae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_77514")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k05vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mqluf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3fbnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uonmo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+resource_name = "Cyclops Enemy"
+script = ExtResource("1_yckof")
+sprite_frames = SubResource("SpriteFrames_6ru5i")
+projectile_texture = ExtResource("1_7u7xy")
+damage = 30
+attack_speed = 1.0
+max_health = 300
+speed = 7000
+multishot = 36
+spread = 10
+projectile_lifetime = 0.3
+projectile_speed = 10000
+hover_distance = 0
+attack_distance = 250
+agro_distance = 400
+difficulty = 10

@@ -35,11 +35,11 @@ func _process(_delta) -> void:
 		icon.texture = icon_list[1]
 		label.text = "Go to the next room."
 		#print(game.player.position.length())
-		if abs(game.player.position.length()) > 600:
+		if abs(game.player.position.length()) > 500:
 			if $Timer.time_left == 0.0: $Timer.start()
 	if step == 4:
 		icon.visible = true
-		label.text = "Kill 3 enemies."
+		label.text = "Kill some enemies."
 		icon.texture = icon_list[2]
 		if game.score >= 99:
 			if $Timer.time_left == 0.0: $Timer.start()

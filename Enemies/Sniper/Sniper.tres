@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=11 format=3 uid="uid://d35or6ygc41gw"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=12 format=3 uid="uid://d35or6ygc41gw"]
 
+[ext_resource type="Texture2D" uid="uid://3vpgb6fu0nt5" path="res://Grimoires/DefaultGrimoire/Art/DefaultGrimoireProjectile.png" id="1_u374h"]
 [ext_resource type="Script" uid="uid://b1nh0fnwny1ua" path="res://Enemies/EnemyResource.gd" id="2_j8wv6"]
 [ext_resource type="Texture2D" uid="uid://dwn0caergdh0w" path="res://Player/Art/Player0.png" id="3_7v54h"]
 [ext_resource type="Texture2D" uid="uid://dwap3r81oi6g" path="res://Player/Art/Player45.png" id="4_nborg"]
@@ -46,15 +47,16 @@ animations = [{
 resource_name = "Sniper Enemy"
 script = ExtResource("2_j8wv6")
 sprite_frames = SubResource("SpriteFrames_4aymc")
+projectile_texture = ExtResource("1_u374h")
 damage = 30
 attack_speed = 2.0
 max_health = 30
 speed = 15000
 multishot = 1
 spread = 0
-projectile_lifetime = 1
+projectile_lifetime = 1.0
 projectile_speed = 60000
 hover_distance = 300
 attack_distance = 250
-agro_distance = 500
+agro_distance = 400
 difficulty = 3

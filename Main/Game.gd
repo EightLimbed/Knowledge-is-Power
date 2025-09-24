@@ -9,15 +9,17 @@ extends Node2D
 var weightings = [0,0,1,1,1,1,3,4]
 var score = 0
 var mobile : bool
+var death : bool = false
 
 func _ready():
 	$Player/Mobile/Control.visible = mobile
 
 func _process(_delta):
-	healthbar.update(0, player.health, player.max_health)
-	dashbar.update(0, player.dash_charge, player.dash_cooldown)
-	manabar.update(0, player.mana, player.max_mana)
-	score_label.text = "Score: " + str(score)
+	if !death:
+		healthbar.update(0, player.health, player.max_health)
+		dashbar.update(0, player.dash_charge, player.dash_cooldown)
+		manabar.update(0, player.mana, player.max_mana)
+		score_label.text = "Score: " + str(score)
 
 func _on_dungeon_next_level():
 	score += $Dungeon.current_level**2 * 100
@@ -35,19 +37,21 @@ func clear_children(node):
 		n.queue_free()
 
 func player_death():
+	death = true
+	$Player.queue_free()
+	$Dungeon.queue_free()
+	$EnemiesContainer.queue_free()
+	$ProjectilesContainer.queue_free()
 	$HUD/VBoxContainer.hide()
-	$HUD/Score.hide()
 	$HUD/Death.show()
-	$HUD/Death/VBoxContainer/Label.text += str(score)
-	clear_children($EnemiesContainer)
-	clear_children($ProjectilesContainer)
-	player.hide()
+	$Tutorial.queue_free()
 	if load_data_from("user://highscore") < score:
 		save_data_to("user://highscore",score)
 		$HUD/Death/VBoxContainer/Label.text += "\n New High Score"
 
 func _on_texture_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://UI/Menu/MainMenu.tscn")
+	queue_free.call_deferred()
 
 func save_data_to(save_path : String, data):
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
