@@ -47,6 +47,7 @@ func player_death():
 	$PickupsContainer.queue_free()
 	$HUD/VBoxContainer.hide()
 	$HUD/Death.show()
+	if has_node("Tutorial"): $Tutorial.queue_free()
 	$HUD/Death/VBoxContainer/Label.text += str(score)
 	if load_data_from("user://highscore") < score:
 		save_data_to("user://highscore",score)
