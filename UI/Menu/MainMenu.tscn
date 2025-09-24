@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dor8i5dhegq1n"]
+[gd_scene load_steps=13 format=3 uid="uid://dor8i5dhegq1n"]
 
 [ext_resource type="Texture2D" uid="uid://c3tsid2ire8nn" path="res://UI/Menu/Art/EvilBackground.png" id="1_87wbn"]
 [ext_resource type="Script" uid="uid://4043lwmuo7my" path="res://UI/Menu/MainMenu.gd" id="1_l5f55"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cf8neao35wtck" path="res://Pickups/Art/Bubble.png" id="7_nh81y"]
 [ext_resource type="Texture2D" uid="uid://1ioh7ukhxpqv" path="res://Pickups/Art/BubblePressed.png" id="8_6qwer"]
 [ext_resource type="Texture2D" uid="uid://cm1ompf0tjy4k" path="res://Pickups/Art/BubbleHover.png" id="9_v0p8s"]
+[ext_resource type="AudioStream" uid="uid://igtg4puk1maw" path="res://UI/Menu/MenuTheme.mp3" id="10_6qwer"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eo5rg"]
 font = ExtResource("3_c5na2")
@@ -127,6 +128,10 @@ toggle_mode = true
 texture_normal = ExtResource("7_nh81y")
 texture_pressed = ExtResource("8_6qwer")
 texture_hover = ExtResource("9_v0p8s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_6qwer")
+autoplay = true
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="toggled" from="TextureButton2" to="." method="_on_texture_button_2_toggled"]

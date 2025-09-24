@@ -79,7 +79,7 @@ func setup_dungeon():
 		pickup_container.add_child.call_deferred(instance)
 		instance.generate.call_deferred()
 
-	#places portal frame at start
+	#places portal frame at start 
 	set_cell(1, room_centers[0]+Vector2(-3,-3), 1, Vector2i(0,0), 0)
 
 	#places portal at end
@@ -94,7 +94,6 @@ func spawn_enemies(current_room, difficulty):
 		var instance = base_enemy.instantiate()
 		var spawn_offset = Vector2(random.randi_range(-14,14), random.randi_range(-14,14))
 		instance.profile = enemy
-		instance.profile.max_health *= (current_level+1)**0.2
 		instance.spawn_pos = map_to_local(current_room+spawn_offset)
 		enemy_container.add_child.call_deferred(instance)
 		difficulty -= enemy.difficulty

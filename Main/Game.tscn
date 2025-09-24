@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqo1gwf4jc7sn"]
+[gd_scene load_steps=18 format=3 uid="uid://cqo1gwf4jc7sn"]
 
 [ext_resource type="Script" uid="uid://bxc1xq2mr1yjf" path="res://Main/Game.gd" id="1_n2juu"]
 [ext_resource type="PackedScene" uid="uid://bfddkmtljoe24" path="res://Dungeons/Dungeon.tscn" id="2_ew2mm"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cvrfe7rsa7vhr" path="res://UI/HUD/ProgressBars/ManaBar.tscn" id="7_s78lh"]
 [ext_resource type="Texture2D" uid="uid://dp56k2s8gtxf" path="res://UI/Menu/Art/Button.png" id="9_nd422"]
 [ext_resource type="Texture2D" uid="uid://cqutvdxksiu7o" path="res://UI/Menu/Art/ButtonHover.png" id="10_22xp4"]
+[ext_resource type="AudioStream" uid="uid://htthfwdhqa6e" path="res://Main/DeathTheme.mp3" id="11_22xp4"]
 [ext_resource type="PackedScene" uid="uid://bcny128t8mbcb" path="res://Main/Tutorial.tscn" id="11_hiksi"]
+[ext_resource type="AudioStream" uid="uid://cwtfs4ein7nq0" path="res://Main/GameTheme.mp3" id="12_nd422"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcscy"]
 font = ExtResource("5_hiksi")
@@ -132,6 +134,9 @@ label_settings = SubResource("LabelSettings_itt6b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HUD/Death"]
+stream = ExtResource("11_22xp4")
+
 [node name="Score" type="Label" parent="HUD"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -158,6 +163,10 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_itt6b")
 
 [node name="Tutorial" parent="." instance=ExtResource("11_hiksi")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_nd422")
+autoplay = true
 
 [connection signal="next_level" from="Dungeon" to="." method="_on_dungeon_next_level"]
 [connection signal="pressed" from="HUD/Death/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

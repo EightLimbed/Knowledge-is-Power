@@ -39,12 +39,15 @@ func clear_children(node):
 func player_death():
 	death = true
 	$Player.queue_free()
+	$AudioStreamPlayer.queue_free()
+	$HUD/Death/AudioStreamPlayer.play()
 	$Dungeon.queue_free()
 	$EnemiesContainer.queue_free()
 	$ProjectilesContainer.queue_free()
+	$PickupsContainer.queue_free()
 	$HUD/VBoxContainer.hide()
 	$HUD/Death.show()
-	$Tutorial.queue_free()
+	$HUD/Death/VBoxContainer/Label.text += str(score)
 	if load_data_from("user://highscore") < score:
 		save_data_to("user://highscore",score)
 		$HUD/Death/VBoxContainer/Label.text += "\n New High Score"
