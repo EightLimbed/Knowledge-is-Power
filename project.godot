@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Knowledge is Power"
+config/name="Evil Land"
 run/main_scene="uid://dor8i5dhegq1n"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="uid://c3tsid2ire8nn"
+config/icon="uid://bisb54bdhp5gj"
+config/macos_native_icon="uid://bisb54bdhp5gj"
+config/windows_native_icon="uid://bisb54bdhp5gj"
+boot_splash/minimum_display_time=10
 
 [display]
 
