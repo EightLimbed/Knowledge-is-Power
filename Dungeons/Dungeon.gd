@@ -38,6 +38,10 @@ func _on_portal_trigger_body_entered(body):
 func new_level():
 	enemy_count = 0
 	current_level += 1
+	for i in enemies:
+		i.max_health *= 1.01
+		i.damage *= 1.01
+		i.speed *= 1.01
 	var color_change = random.randf_range(0.4,1.6)
 	modulate.r = color_change
 	modulate.g = color_change
